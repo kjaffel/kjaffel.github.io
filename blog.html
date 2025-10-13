@@ -1,58 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khawla Jaffel - Blog</title>
-    <!-- Include Quill.js for rich text editor -->
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
-    <style>
-        /* Your original color scheme */
-        body {
-            font-family: 'Spinnaker', sans-serif;
-            background: #fffaf5;
-            color: #222;
-        }
+<!DOCTYPE HTML>
+<!--
+	Khawla Jaffel by HTML5 UP
+	html5up.net | @kjaffel
+-->
+<html>
+	<head>
+		<title>Home - Khawla Jaffel</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
-        h1, h2, h3, h4 {
-            color: #8B4513;
-            font-weight: bold;
-        }
+		<!-- Google Font: Spinnaker -->
+		<link href="https://fonts.googleapis.com/css2?family=Spinnaker&display=swap" rel="stylesheet">
 
-        h2 {
-            color: #A0522D;
-        }
+		<!-- CSS -->
+		<link rel="stylesheet" href="assets/css/main.css" />
 
-        h3 {
-            color: #FF8C00;
-        }
+		<style>
+			/* Apply Spinnaker font */
+			body {
+				font-family: 'Spinnaker', sans-serif;
+				background: #fffaf5; /* light beige background */
+				color: #222; /* main text black */
+			}
 
-        a {
-            color: #FF8C00;
-            text-decoration: none;
-        }
+			h1, h2, h3, h4 {
+				color: #8B4513; /* SaddleBrown */
+				font-weight: bold;
+			}
 
-        a:hover {
-            color: #8B4513;
-            text-decoration: underline;
-        }
+			h2 {
+				color: #A0522D; /* Sienna */
+			}
 
-        .button {
-            background: #FF8C00;
-            color: white;
-            border-radius: 6px;
-            padding: 10px 20px;
-            text-transform: uppercase;
-            font-weight: bold;
-            border: none;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
+			h3 {
+				color: #FF8C00; /* Dark Orange */
+			}
 
-        .button:hover {
-            background: #8B4513;
-        }
+			a {
+				color: #FF8C00;
+				text-decoration: none;
+			}
+
+			a:hover {
+				color: #8B4513;
+				text-decoration: underline;
+			}
+
+			/* Buttons */
+			.button {
+				background: #FF8C00;
+				color: white;
+				border-radius: 6px;
+				padding: 10px 20px;
+				text-transform: uppercase;
+				font-weight: bold;
+			}
+			.button:hover {
+				background: #8B4513;
+			}
+
+			/* Sidebar titles */
+			#sidebar h3 {
+				color: #A0522D;
+			}
+
+			/* Footer */
+			#footer {
+				background: #8B4513;
+				color: #fff;
+				padding: 20px 0;
+			}
+			#footer a {
+				color: #FFDEAD;
+			}
+			#footer a:hover {
+				color: #FFD700;
+			}
 
         /* Blog Section Styles */
         .blog-section {
@@ -314,28 +337,41 @@
             color: #FFD700;
         }
     </style>
-</head>
-<body>
-    <!-- Your Header -->
-    <div id="header">
-        <header>
-            <h2><a href="index.html" id="logo">Khawla Jaffel</a></h2>
-            <p>Particle Physicist — Postdoc at CERN & USTC.<br/>
-            Member of CMS Experiment at CERN.</p>
-        </header>
+        
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
 
-        <!-- Nav -->
-        <nav id="nav">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="education.html">Education</a></li>
-                <li><a href="talks.html">Talks</a></li>
-                <li class="current"><a href="blog.html">Blog</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </div>
+			<!-- Header -->
+			<div id="header">
 
+				<header>
+					<h2><a href="index.html" id="logo">Khawla Jaffel</a></h2>
+					<p>Particle Physicist — Postdoc at CERN & USTC.<br/>
+					Member of CMS Experiment at CERN.</p>
+				</header>
+
+				<!-- Nav -->
+				<nav id="nav">
+					<ul>
+						<li class="current"><a href="index.html">Home</a></li>
+						<li><a href="education.html">Education</a></li>
+						<li><a href="talks.html">Talks</a></li>
+						<li><a href="blog.html">Blog</a></li>
+						<li><a href="contact.html">Contact</a></li>
+					</ul>
+				</nav>
+			</div>
+
+			<!-- Main -->
+				<section class="wrapper style1">
+					<div class="container">
+						<div id="content">
+
+			            <!-- Content -->
+
+							<article>
+							
     <section class="blog-section">
         <div class="blog-container">
             <div class="blog-header">
@@ -385,26 +421,40 @@
         </div>
     </div>
 
-    <!-- Your Footer -->
-    <div id="footer">
-        <div class="container">
-            <ul class="icons">
-                <li><a href="https://twitter.com/khawlajaffel" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-                <li><a href="https://web.facebook.com/profile.php?id=100074540816904&_rdc=1&_rdr" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-                <li><a href="https://github.com/kjaffel" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-                <li><a href="https://www.linkedin.com/in/khawla-jaffel-b726a414a/" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-                <li><a href="https://www.instagram.com/__gamza____/" class="icon brands fa-instagram"><span class="label">instagram</span></a></li>
-            </ul>
-            <div class="copyright">
-                <ul class="menu">
-                    <li>&copy; 2025 Khawla Jaffel</li>
-                    <li>Powered by: <a href="http://html5up.net">HTML5 UP</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+                           </article>
+						</div>
+					</div>
+				</section>
 
-    <script>
+			<!-- Footer -->
+			<div id="footer">
+				<div class="container">
+					<ul class="icons">
+						<li><a href="https://twitter.com/khawlajaffel" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="https://web.facebook.com/profile.php?id=100074540816904&_rdc=1&_rdr" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+						<li><a href="https://github.com/kjaffel" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						<li><a href="https://www.linkedin.com/in/khawla-jaffel-b726a414a/" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+						<li><a href="https://www.instagram.com/__gamza____/" class="icon brands fa-instagram"><span class="label">instagram</span></a></li>
+					</ul>
+					<div class="copyright">
+						<ul class="menu">
+							<li>&copy; 2025 Khawla Jaffel</li>
+							<li>Powered by: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.dropotron.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+        <script>
         // Initialize Quill editor
         const quill = new Quill('#editor-container', {
             theme: 'snow',
@@ -618,4 +668,5 @@
     </script>
 </body>
 </html>
+
 
