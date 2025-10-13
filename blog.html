@@ -616,10 +616,20 @@
             const panel = document.getElementById('adminPanel');
             panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
         }
-        
-        function login() {
+
+        async function login() {
             const password = document.getElementById('adminPassword').value;
-            if (password === BLOG_CONFIG.ADMIN_PASSWORD) {
+
+            // Send password to serverless function
+            const res = await fetch('/.netlify/functions/check-password', {
+                method: 'POST',
+                body: JSON.stringify({ password }),
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+                // Password correct → grant admin
                 isAdmin = true;
                 localStorage.setItem('isAdmin', 'true');
                 document.getElementById('adminLogin').style.display = 'none';
@@ -629,7 +639,20 @@
             } else {
                 alert('Incorrect password');
             }
-        }
+        }  
+        //function login() {
+        //   const password = document.getElementById('adminPassword').value;
+        //  if (password === BLOG_CONFIG.ADMIN_PASSWORD) {
+        //        isAdmin = true;
+        //       localStorage.setItem('isAdmin', 'true');
+        //       document.getElementById('adminLogin').style.display = 'none';
+        //        document.getElementById('adminControls').style.display = 'block';
+        //       renderPosts();
+        //        toggleAdminPanel();
+        //    } else {
+        //        alert('Incorrect password');
+        //   }
+        //}
         
         function logout() {
             isAdmin = false;
@@ -923,6 +946,7 @@
     </script>
 </body>
 </html>
+
 
 
 
