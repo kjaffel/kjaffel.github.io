@@ -1,181 +1,946 @@
-<!DOCTYPE HTML>
-<!--
-	Khawla Jaffel by HTML5 UP
-	html5up.net | @kjaffel
--->
-<html>
-	<head>
-		<title>Home - Khawla Jaffel ( website under maintaince ... )</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khawla Jaffel - Blog</title>
+    <!-- Include Quill.js for rich text editor -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Futura Light Font -->
+    <link href="https://fonts.cdnfonts.com/css/futura-light" rel="stylesheet">
+    <style>
+        /* Futura Light Font */
+        * {
+            font-family: 'Futura Light', sans-serif !important;
+        }
 
-		<!-- Google Font: Spinnaker -->
-		<link href="https://fonts.googleapis.com/css2?family=Spinnaker&display=swap" rel="stylesheet">
+        /* Your original color scheme */
+        body {
+            background: #fffaf5;
+            color: #222;
+            margin: 0;
+            padding: 0;
+        }
 
-		<!-- CSS -->
-		<link rel="stylesheet" href="assets/css/main.css" />
+        h1, h2, h3, h4 {
+            color: #8B4513;
+            font-weight: bold;
+        }
 
-		<style>
-			/* Apply Spinnaker font */
-			body {
-				font-family: 'Spinnaker', sans-serif;
-				background: #fffaf5; /* light beige background */
-				color: #222; /* main text black */
-			}
+        h2 {
+            color: #A0522D;
+        }
 
-			h1, h2, h3, h4 {
-				color: #8B4513; /* SaddleBrown */
-				font-weight: bold;
-			}
+        h3 {
+            color: #FF8C00;
+        }
 
-			h2 {
-				color: #A0522D; /* Sienna */
-			}
+        a {
+            color: #FF8C00;
+            text-decoration: none;
+        }
 
-			h3 {
-				color: #FF8C00; /* Dark Orange */
-			}
+        a:hover {
+            color: #8B4513;
+            text-decoration: underline;
+        }
 
-			a {
-				color: #FF8C00;
-				text-decoration: none;
-			}
+        .button {
+            background: #FF8C00;
+            color: white;
+            border-radius: 6px;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
 
-			a:hover {
-				color: #8B4513;
-				text-decoration: underline;
-			}
+        .button:hover {
+            background: #8B4513;
+        }
 
-			/* Buttons */
-			.button {
-				background: #FF8C00;
-				color: white;
-				border-radius: 6px;
-				padding: 10px 20px;
-				text-transform: uppercase;
-				font-weight: bold;
-			}
-			.button:hover {
-				background: #8B4513;
-			}
+        /* Blog Section Styles */
+        .blog-section {
+            padding: 3rem 0;
+            background: #fffaf5;
+            min-height: 80vh;
+        }
+        
+        .blog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .blog-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .blog-header h2 {
+            color: #8B4513;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .blog-header h2:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: #FF8C00;
+            margin: 10px auto;
+        }
+        
+        .blog-header p {
+            color: #222;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Blog Grid and Cards */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .blog-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #e8d5c4;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(139, 69, 19, 0.15);
+        }
+        
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid #FF8C00;
+        }
+        
+        .blog-content {
+            padding: 1.5rem;
+        }
+        
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: #A0522D;
+        }
+        
+        .blog-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #8B4513;
+            line-height: 1.4;
+        }
+        
+        .blog-excerpt {
+            color: #555;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .blog-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+        
+        .read-more {
+            display: inline-block;
+            color: #FF8C00;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .read-more:hover {
+            color: #8B4513;
+            text-decoration: underline;
+        }
+        
+        .like-btn {
+            background: none;
+            border: none;
+            color: #A0522D;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        
+        .like-btn:hover {
+            color: #FF8C00;
+        }
+        
+        .like-btn.liked {
+            color: #FF8C00;
+        }
+        
+        /* Full Post Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background: white;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        .modal-header {
+            background: #8B4513;
+            color: white;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-body {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .close-modal {
+            background: none;
+            color: white;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Blog Editor */
+        .blog-editor {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(139, 69, 19, 0.1);
+            border: 1px solid #e8d5c4;
+        }
+        
+        .editor-input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #A0522D;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        /* Quill Editor Customization */
+        .ql-toolbar {
+            border-color: #A0522D !important;
+            border-radius: 4px 4px 0 0;
+        }
+        
+        .ql-container {
+            border-color: #A0522D !important;
+            border-radius: 0 0 4px 4px;
+            min-height: 200px;
+        }
+        
+        .ql-editor {
+            min-height: 300px;
+        }
+        
+        .ql-editor img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Admin Controls */
+        .admin-bubble {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 1000;
+            background: #FF8C00;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+            transition: all 0.3s;
+        }
+        
+        .admin-bubble:hover {
+            background: #8B4513;
+            transform: scale(1.1);
+        }
+        
+        .admin-panel {
+            display: none;
+            position: fixed;
+            top: 160px;
+            right: 20px;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            min-width: 250px;
+            border: 2px solid #FF8C00;
+        }
+        
+        .admin-login {
+            text-align: center;
+        }
+        
+        /* Comments Section */
+        .comments-section {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e8d5c4;
+        }
+        
+        .comment {
+            background: #f9f9f9;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #FF8C00;
+        }
+        
+        .comment-author {
+            font-weight: bold;
+            color: #8B4513;
+            margin-bottom: 0.5rem;
+        }
+        
+        .comment-form {
+            margin-top: 2rem;
+        }
+        
+        .comment-input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 1rem;
+            border: 1px solid #A0522D;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .blog-header h2 {
+                font-size: 2rem;
+            }
+            
+            .modal-body {
+                padding: 1rem;
+            }
+            
+            .admin-bubble {
+                top: 80px;
+                right: 10px;
+            }
+            
+            .admin-panel {
+                right: 10px;
+                left: 10px;
+            }
+        }
 
-			/* Sidebar titles */
-			#sidebar h3 {
-				color: #A0522D;
-			}
+        /* Your original footer styles */
+        #footer {
+            background: #8B4513;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        #footer a {
+            color: #FFDEAD;
+        }
+        #footer a:hover {
+            color: #FFD700;
+        }
 
-			/* Footer */
-			#footer {
-				background: #8B4513;
-				color: #fff;
-				padding: 20px 0;
-			}
-			#footer a {
-				color: #FFDEAD;
-			}
-			#footer a:hover {
-				color: #FFD700;
-			}
-		</style>
-	</head>
-	<body class="is-preload">
-		<div id="page-wrapper">
+        /* Header styles matching your original */
+        #header {
+            background: #8B4513;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
 
-			<!-- Header -->
-			<div id="header">
+        #header a {
+            color: white;
+        }
 
-				<header>
-					<h2><a href="index.html" id="logo">Khawla Jaffel</a></h2>
-					<p>Particle Physicist — Postdoc at CERN & USTC.<br/>
-					Member of CMS Experiment at CERN.</p>
-				</header>
+        #nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0 0 0;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
 
-				<!-- Nav -->
-				<nav id="nav">
-					<ul>
-						<li class="current"><a href="index.html">Home</a></li>
-						<li><a href="education.html">Education</a></li>
-						<li><a href="talks.html">Talks</a></li>
-						<li><a href="blog.html">Blog</a></li>
-						<li><a href="contact.html">Contact</a></li>
-					</ul>
-				</nav>
-			</div>
+        #nav a {
+            color: #FFDEAD;
+        }
 
-			<!-- Main -->
-			<section class="wrapper style1">
-				<div class="container">
-					<div class="row gtr-200">
-						<div class="col-8 col-12-narrower">
-							<div id="content">
+        #nav a:hover {
+            color: #FFD700;
+        }
 
-								<article>
-									<header>
-										<h2>Khawla Jaffel</h2>
-										<p>Particle Physicist — Postdoc at CERN and USTC. <br/>
-										Working on CMS Higgs searches.</p>
-									</header>
+        /* Edit and Delete buttons */
+        .admin-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
 
-									<span class="image featured"><img src="images/khawla_2.jpg" alt="" /></span>
+        .edit-btn, .delete-btn {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
 
-									<p><em>A journey of a thousand miles begins with a single step.🧡</em></p>
+        .edit-btn {
+            background: #FF8C00;
+            color: white;
+        }
 
-									<h3>About me</h3>
-									<p>[Short bio text goes here...]</p>
-								</article>
+        .delete-btn {
+            background: #A0522D;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Your Header -->
+    <div id="header">
+        <header>
+            <h2><a href="index.html" id="logo">Khawla Jaffel</a></h2>
+            <p>Particle Physicist — Postdoc at CERN & USTC.<br/>
+            Member of CMS Experiment at CERN.</p>
+        </header>
 
-							</div>
-						</div>
-						<div class="col-4 col-12-narrower">
-							<div id="sidebar">
-								<section>
-									<h3>Research</h3>
-									<p>Currently Postdoc at CERN and USTC.<br/>
-									Working on BSM Higgs boson searches in the CMS experiment.</p>
-									<footer>
-										<a href="resume.html" class="button">Download My Resume</a>
-									</footer>
-								</section>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
+        <!-- Nav -->
+        <nav id="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="talks.html">Talks</a></li>
+                <li class="current"><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
 
+    <!-- Admin Bubble -->
+    <div class="admin-bubble" onclick="toggleAdminPanel()">
+        <i class="fas fa-user-cog"></i>
+    </div>
 
-			<!-- Footer -->
-			<div id="footer">
-				<div class="container">
-					<ul class="icons">
-						<li><a href="https://twitter.com/khawlajaffel" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="https://web.facebook.com/profile.php?id=100074540816904&_rdc=1&_rdr" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-						<li><a href="https://github.com/kjaffel" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-						<li><a href="https://www.linkedin.com/in/khawla-jaffel-b726a414a/" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-						<li><a href="https://www.instagram.com/__gamza____/" class="icon brands fa-instagram"><span class="label">instagram</span></a></li>
-					</ul>
-					<div class="copyright">
-						<ul class="menu">
-							<li>&copy; 2025 Khawla Jaffel</li>
-							<li>Powered by: <a href="http://html5up.net">HTML5 UP</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
+    <!-- Admin Panel -->
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-login" id="adminLogin">
+            <h3 style="color: #8B4513; margin-bottom: 1rem;">Admin Login</h3>
+            <input type="password" id="adminPassword" placeholder="Enter password" class="editor-input">
+            <button onclick="login()" class="button" style="width: 100%; margin-top: 1rem;">Login</button>
+        </div>
+        
+        <div id="adminControls" style="display: none;">
+            <h3 style="color: #8B4513; margin-bottom: 1rem;">Admin Controls</h3>
+            <button onclick="showEditor()" class="button" style="width: 100%; margin-bottom: 0.5rem;">+ New Post</button>
+            <button onclick="logout()" class="button" style="background: #A0522D; width: 100%;">Logout</button>
+        </div>
+    </div>
 
-		</div>
+    <section class="blog-section">
+        <div class="blog-container">
+            <div class="blog-header">
+                <h2>Physics & Research Blog</h2>
+                <p>Insights, discoveries, and thoughts from my work in particle physics at CERN</p>
+            </div>
+            
+            <!-- Blog Editor (Admin Only) -->
+            <div class="blog-editor" id="blogEditor" style="display: none;">
+                <h3 style="color: #8B4513; margin-bottom: 1rem;" id="editorTitle">Write New Blog Post</h3>
+                <input type="text" id="post-title" placeholder="Post Title" class="editor-input">
+                <div id="editor-container"></div>
+                <div style="margin-top: 1rem;">
+                    <button onclick="savePost()" class="button" id="saveButton">Publish Post</button>
+                    <button onclick="hideEditor()" class="button" style="background: #A0522D;">Cancel</button>
+                </div>
+            </div>
+            
+            <!-- Blog Posts Grid -->
+            <div class="blog-grid" id="posts-container">
+                <!-- Posts will be dynamically added here -->
+            </div>
+        </div>
+    </section>
 
-		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.dropotron.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
+    <!-- Full Post Modal -->
+    <div class="modal" id="postModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-post-title" style="color: white; margin: 0;"></h2>
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="blog-meta">
+                    <span id="modal-post-date"></span>
+                    <span id="modal-read-time"></span>
+                </div>
+                <div id="modal-post-content"></div>
+                
+                <!-- Like Button in Modal -->
+                <div style="margin: 2rem 0; text-align: center;">
+                    <button class="like-btn" id="modal-like-btn" onclick="likePost(currentPostId)">
+                        <i class="far fa-heart"></i>
+                        <span id="modal-like-count">0</span> Likes
+                    </button>
+                </div>
+                
+                <!-- Comments Section in Modal -->
+                <div class="comments-section">
+                    <h3 style="color: #8B4513;">Comments</h3>
+                    <div id="comments-container"></div>
+                    <div class="comment-form">
+                        <input type="text" id="comment-author" placeholder="Your Name" class="comment-input">
+                        <textarea id="comment-text" placeholder="Your Comment" class="comment-input" rows="3"></textarea>
+                        <button onclick="addComment()" class="button">Post Comment</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	</body>
+    <!-- Your Footer -->
+    <div id="footer">
+        <div class="container">
+            <ul class="icons">
+                <li><a href="https://twitter.com/khawlajaffel" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                <li><a href="https://web.facebook.com/profile.php?id=100074540816904&_rdc=1&_rdr" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                <li><a href="https://github.com/kjaffel" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+                <li><a href="https://www.linkedin.com/in/khawla-jaffel-b726a414a/" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+                <li><a href="https://www.instagram.com/__gamza____/" class="icon brands fa-instagram"><span class="label">instagram</span></a></li>
+            </ul>
+            <div class="copyright">
+                <ul class="menu">
+                    <li>&copy; 2025 Khawla Jaffel</li>
+                    <li>Powered by: <a href="http://html5up.net">HTML5 UP</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Quill editor
+        const quill = new Quill('#editor-container', {
+            theme: 'snow',
+            modules: {
+                toolbar: [
+                    [{ 'header': [1, 2, 3, false] }],
+                    ['bold', 'italic', 'underline', 'strike'],
+                    [{ 'color': [] }, { 'background': [] }],
+                    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                    [{ 'indent': '-1'}, { 'indent': '+1' }],
+                    ['link', 'image', 'code-block'],
+                    ['blockquote', 'code-block'],
+                    ['clean']
+                ]
+            },
+            placeholder: 'Write your blog post here...'
+        });
+
+        // Blog management system
+        let posts = JSON.parse(localStorage.getItem('blogPosts')) || [];
+        let isAdmin = localStorage.getItem('isAdmin') === 'true';
+        let currentPostId = null;
+        let editingPostId = null;
+        const ADMIN_PASSWORD = 'physics123'; // Change this to your preferred password
+        
+        // Initialize likes and comments
+        let likes = JSON.parse(localStorage.getItem('blogLikes')) || {};
+        let comments = JSON.parse(localStorage.getItem('blogComments')) || {};
+        
+        // Sample posts if none exist
+        if (posts.length === 0) {
+            posts = [
+                {
+                    id: 1,
+                    title: "Searching for BSM Higgs Bosons at CMS",
+                    content: `<h2>Beyond Standard Model Higgs Physics</h2>
+                    <p>Exploring beyond Standard Model Higgs scenarios and the challenges in detecting these elusive particles in proton-proton collisions...</p>
+                    <p>The search for new physics beyond the Standard Model is one of the most exciting areas of particle physics today. At the CMS experiment, we're particularly interested in extended Higgs sectors that could reveal new fundamental particles and interactions.</p>
+                    <blockquote>Recent analyses have focused on rare decay channels and precision measurements</blockquote>
+                    <p>Here's a simple code example of our analysis framework:</p>
+                    <pre><code class="language-python">def analyze_higgs_data(dataset):
+    # Process collision events
+    events = process_events(dataset)
+    signals = filter_signals(events)
+    return calculate_significance(signals)</code></pre>
+                    <p>Recent analyses have focused on rare decay channels and precision measurements that could provide hints of physics beyond our current understanding.</p>`,
+                    date: "May 15, 2023",
+                    excerpt: "Exploring beyond Standard Model Higgs scenarios and the challenges in detecting these elusive particles in proton-proton collisions..."
+                }
+            ];
+            localStorage.setItem('blogPosts', JSON.stringify(posts));
+        }
+        
+        function toggleAdminPanel() {
+            const panel = document.getElementById('adminPanel');
+            panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+        }
+        
+        function login() {
+            const password = document.getElementById('adminPassword').value;
+            if (password === ADMIN_PASSWORD) {
+                isAdmin = true;
+                localStorage.setItem('isAdmin', 'true');
+                document.getElementById('adminLogin').style.display = 'none';
+                document.getElementById('adminControls').style.display = 'block';
+                renderPosts();
+                toggleAdminPanel();
+            } else {
+                alert('Incorrect password');
+            }
+        }
+        
+        function logout() {
+            isAdmin = false;
+            localStorage.setItem('isAdmin', 'false');
+            document.getElementById('adminLogin').style.display = 'block';
+            document.getElementById('adminControls').style.display = 'none';
+            hideEditor();
+            renderPosts();
+            toggleAdminPanel();
+        }
+        
+        function showEditor(postId = null) {
+            editingPostId = postId;
+            const editor = document.getElementById('blogEditor');
+            const titleInput = document.getElementById('post-title');
+            const editorTitle = document.getElementById('editorTitle');
+            const saveButton = document.getElementById('saveButton');
+            
+            if (postId) {
+                // Edit existing post
+                const post = posts.find(p => p.id === postId);
+                if (post) {
+                    titleInput.value = post.title;
+                    quill.root.innerHTML = post.content;
+                    editorTitle.textContent = 'Edit Blog Post';
+                    saveButton.textContent = 'Update Post';
+                }
+            } else {
+                // New post
+                titleInput.value = '';
+                quill.root.innerHTML = '';
+                editorTitle.textContent = 'Write New Blog Post';
+                saveButton.textContent = 'Publish Post';
+            }
+            
+            editor.style.display = 'block';
+            toggleAdminPanel();
+        }
+        
+        function hideEditor() {
+            document.getElementById('blogEditor').style.display = 'none';
+            editingPostId = null;
+        }
+        
+        function savePost() {
+            const title = document.getElementById('post-title').value;
+            const content = quill.root.innerHTML;
+            const textContent = quill.getText();
+            
+            if (title && content) {
+                const wordCount = textContent.split(/\s+/).length;
+                const readTime = Math.ceil(wordCount / 200); // 200 words per minute
+                
+                if (editingPostId) {
+                    // Update existing post
+                    const postIndex = posts.findIndex(p => p.id === editingPostId);
+                    if (postIndex !== -1) {
+                        posts[postIndex].title = title;
+                        posts[postIndex].content = content;
+                        posts[postIndex].excerpt = textContent.substring(0, 150) + (textContent.length > 150 ? '...' : '');
+                        posts[postIndex].readTime = readTime;
+                    }
+                } else {
+                    // Create new post
+                    const newPost = {
+                        id: Date.now(),
+                        title: title,
+                        content: content,
+                        date: new Date().toLocaleDateString('en-US', { 
+                            year: 'numeric', 
+                            month: 'long', 
+                            day: 'numeric' 
+                        }),
+                        excerpt: textContent.substring(0, 150) + (textContent.length > 150 ? '...' : ''),
+                        readTime: readTime
+                    };
+                    
+                    posts.unshift(newPost);
+                }
+                
+                localStorage.setItem('blogPosts', JSON.stringify(posts));
+                renderPosts();
+                hideEditor();
+            } else {
+                alert('Please fill in both title and content');
+            }
+        }
+        
+        function calculateReadTime(content) {
+            // Remove HTML tags and calculate word count
+            const text = content.replace(/<[^>]*>/g, ' ');
+            const wordCount = text.split(/\s+/).length;
+            return Math.ceil(wordCount / 200); // 200 words per minute
+        }
+        
+        function renderPosts() {
+            const container = document.getElementById('posts-container');
+            container.innerHTML = '';
+            
+            if (posts.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #555; grid-column: 1 / -1;">No blog posts yet.</p>';
+                return;
+            }
+            
+            posts.forEach(post => {
+                const readTime = post.readTime || calculateReadTime(post.content);
+                const likeCount = likes[post.id] || 0;
+                const adminActions = isAdmin ? `
+                    <div class="admin-actions">
+                        <button class="edit-btn" onclick="showEditor(${post.id})">Edit</button>
+                        <button class="delete-btn" onclick="deletePost(${post.id})">Delete</button>
+                    </div>
+                ` : '';
+                
+                const postHTML = `
+                    <article class="blog-card">
+                        <img src="https://via.placeholder.com/400x200/8B4513/FFFFFF?text=Physics+Research" alt="${post.title}" class="blog-image">
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span>${post.date}</span>
+                                <span>${readTime} min read</span>
+                            </div>
+                            <h3 class="blog-title">${post.title}</h3>
+                            <div class="blog-excerpt">${post.excerpt}</div>
+                            <div class="blog-actions">
+                                <a href="#" onclick="viewFullPost(${post.id}); return false;" class="read-more">Read More →</a>
+                                <button class="like-btn ${localStorage.getItem(`liked_${post.id}`) ? 'liked' : ''}" onclick="likePost(${post.id})">
+                                    <i class="${localStorage.getItem(`liked_${post.id}`) ? 'fas' : 'far'} fa-heart"></i>
+                                    <span>${likeCount}</span>
+                                </button>
+                            </div>
+                            ${adminActions}
+                        </div>
+                    </article>
+                `;
+                container.innerHTML += postHTML;
+            });
+        }
+        
+        function viewFullPost(id) {
+            const post = posts.find(p => p.id === id);
+            if (post) {
+                currentPostId = id;
+                const readTime = post.readTime || calculateReadTime(post.content);
+                const likeCount = likes[id] || 0;
+                
+                document.getElementById('modal-post-title').textContent = post.title;
+                document.getElementById('modal-post-date').textContent = post.date;
+                document.getElementById('modal-read-time').textContent = `${readTime} min read`;
+                document.getElementById('modal-post-content').innerHTML = post.content;
+                document.getElementById('modal-like-count').textContent = likeCount;
+                
+                // Update like button state
+                const likeBtn = document.getElementById('modal-like-btn');
+                likeBtn.className = `like-btn ${localStorage.getItem(`liked_${id}`) ? 'liked' : ''}`;
+                likeBtn.innerHTML = `<i class="${localStorage.getItem(`liked_${id}`) ? 'fas' : 'far'} fa-heart"></i> <span id="modal-like-count">${likeCount}</span> Likes`;
+                
+                // Load comments
+                renderComments(id);
+                
+                document.getElementById('postModal').style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        
+        function closeModal() {
+            document.getElementById('postModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            currentPostId = null;
+        }
+        
+        function deletePost(id) {
+            if (confirm('Are you sure you want to delete this post?')) {
+                posts = posts.filter(post => post.id !== id);
+                localStorage.setItem('blogPosts', JSON.stringify(posts));
+                
+                // Also delete associated likes and comments
+                delete likes[id];
+                delete comments[id];
+                localStorage.setItem('blogLikes', JSON.stringify(likes));
+                localStorage.setItem('blogComments', JSON.stringify(comments));
+                
+                renderPosts();
+            }
+        }
+        
+        function likePost(postId) {
+            const liked = localStorage.getItem(`liked_${postId}`);
+            
+            if (!liked) {
+                // Like the post
+                likes[postId] = (likes[postId] || 0) + 1;
+                localStorage.setItem(`liked_${postId}`, 'true');
+            } else {
+                // Unlike the post
+                likes[postId] = Math.max(0, (likes[postId] || 1) - 1);
+                localStorage.removeItem(`liked_${postId}`);
+            }
+            
+            localStorage.setItem('blogLikes', JSON.stringify(likes));
+            
+            // Update UI
+            if (currentPostId === postId) {
+                // Update modal
+                const likeCount = likes[postId] || 0;
+                document.getElementById('modal-like-count').textContent = likeCount;
+                const likeBtn = document.getElementById('modal-like-btn');
+                likeBtn.className = `like-btn ${!liked ? 'liked' : ''}`;
+                likeBtn.innerHTML = `<i class="${!liked ? 'fas' : 'far'} fa-heart"></i> <span id="modal-like-count">${likeCount}</span> Likes`;
+            }
+            
+            // Update grid view
+            renderPosts();
+        }
+        
+        function renderComments(postId) {
+            const container = document.getElementById('comments-container');
+            const postComments = comments[postId] || [];
+            
+            if (postComments.length === 0) {
+                container.innerHTML = '<p>No comments yet. Be the first to comment!</p>';
+                return;
+            }
+            
+            container.innerHTML = postComments.map(comment => `
+                <div class="comment">
+                    <div class="comment-author">${comment.author}</div>
+                    <div class="comment-text">${comment.text}</div>
+                    <small style="color: #A0522D;">${comment.date}</small>
+                </div>
+            `).join('');
+        }
+        
+        function addComment() {
+            if (!currentPostId) return;
+            
+            const author = document.getElementById('comment-author').value;
+            const text = document.getElementById('comment-text').value;
+            
+            if (author && text) {
+                if (!comments[currentPostId]) {
+                    comments[currentPostId] = [];
+                }
+                
+                comments[currentPostId].push({
+                    author: author,
+                    text: text,
+                    date: new Date().toLocaleDateString('en-US', { 
+                        year: 'numeric', 
+                        month: 'long', 
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    })
+                });
+                
+                localStorage.setItem('blogComments', JSON.stringify(comments));
+                
+                // Clear form and refresh comments
+                document.getElementById('comment-author').value = '';
+                document.getElementById('comment-text').value = '';
+                renderComments(currentPostId);
+            } else {
+                alert('Please fill in both name and comment');
+            }
+        }
+        
+        // Close modal when clicking outside content
+        window.onclick = function(event) {
+            const modal = document.getElementById('postModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+            
+            // Close admin panel when clicking outside
+            const adminPanel = document.getElementById('adminPanel');
+            const adminBubble = document.querySelector('.admin-bubble');
+            if (!adminPanel.contains(event.target) && !adminBubble.contains(event.target)) {
+                adminPanel.style.display = 'none';
+            }
+        }
+        
+        // Check admin status on page load
+        window.onload = function() {
+            if (isAdmin) {
+                document.getElementById('adminLogin').style.display = 'none';
+                document.getElementById('adminControls').style.display = 'block';
+            }
+            renderPosts();
+        }
+    </script>
+</body>
 </html>
-
-
-
-
-
