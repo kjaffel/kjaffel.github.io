@@ -1,3 +1,3 @@
 const BLOG_CONFIG = {
-    ADMIN_PASSWORD: ''
+    ADMIN_PASSWORD: 'physics123'
 };
