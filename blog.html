@@ -4,7 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Khawla Jaffel - Blog</title>
+    <!-- Include Quill.js for rich text editor -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
     <style>
+        /* Your original color scheme */
+        body {
+            font-family: 'Spinnaker', sans-serif;
+            background: #fffaf5;
+            color: #222;
+        }
+
+        h1, h2, h3, h4 {
+            color: #8B4513;
+            font-weight: bold;
+        }
+
+        h2 {
+            color: #A0522D;
+        }
+
+        h3 {
+            color: #FF8C00;
+        }
+
+        a {
+            color: #FF8C00;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #8B4513;
+            text-decoration: underline;
+        }
+
+        .button {
+            background: #FF8C00;
+            color: white;
+            border-radius: 6px;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .button:hover {
+            background: #8B4513;
+        }
+
         /* Blog Section Styles */
         .blog-section {
             padding: 3rem 0;
@@ -82,8 +131,6 @@
             color: #A0522D;
             font-size: 0.9rem;
             margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
         }
         
         .blog-title {
@@ -163,7 +210,7 @@
             border: 1px solid #e8d5c4;
         }
         
-        input, textarea {
+        .editor-input {
             width: 100%;
             padding: 12px;
             margin: 10px 0;
@@ -173,33 +220,39 @@
             font-size: 1rem;
         }
         
-        textarea {
+        /* Quill Editor Customization */
+        .ql-toolbar {
+            border-color: #A0522D !important;
+            border-radius: 4px 4px 0 0;
+        }
+        
+        .ql-container {
+            border-color: #A0522D !important;
+            border-radius: 0 0 4px 4px;
             min-height: 200px;
-            resize: vertical;
+            font-family: inherit;
         }
         
-        .button {
-            background: #FF8C00;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-            text-transform: uppercase;
-            transition: background 0.3s;
+        .ql-editor {
+            min-height: 300px;
         }
         
-        .button:hover {
-            background: #8B4513;
+        .ql-editor img {
+            max-width: 100%;
+            height: auto;
         }
         
-        .button.secondary {
-            background: #A0522D;
+        /* Admin Controls */
+        .admin-controls {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1rem;
+            background: rgba(255, 140, 0, 0.1);
+            border-radius: 8px;
         }
         
-        .button.secondary:hover {
-            background: #8B4513;
+        .admin-panel {
+            display: none;
         }
         
         /* Responsive Design */
@@ -217,10 +270,71 @@
                 padding: 1.5rem;
             }
         }
+
+        /* Your original footer styles */
+        #footer {
+            background: #8B4513;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        #footer a {
+            color: #FFDEAD;
+        }
+        #footer a:hover {
+            color: #FFD700;
+        }
+
+        /* Header styles matching your original */
+        #header {
+            background: #8B4513;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        #header a {
+            color: white;
+        }
+
+        #nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0 0 0;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        #nav a {
+            color: #FFDEAD;
+        }
+
+        #nav a:hover {
+            color: #FFD700;
+        }
     </style>
 </head>
 <body>
-    <!-- Your existing navigation and header -->
+    <!-- Your Header -->
+    <div id="header">
+        <header>
+            <h2><a href="index.html" id="logo">Khawla Jaffel</a></h2>
+            <p>Particle Physicist — Postdoc at CERN & USTC.<br/>
+            Member of CMS Experiment at CERN.</p>
+        </header>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="talks.html">Talks</a></li>
+                <li class="current"><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
 
     <section class="blog-section">
         <div class="blog-container">
@@ -229,20 +343,29 @@
                 <p>Insights, discoveries, and thoughts from my work in particle physics at CERN</p>
             </div>
             
-            <!-- Blog Editor -->
-            <div class="blog-editor" id="editor" style="display: none;">
-                <h3 style="color: #8B4513; margin-bottom: 1rem;">Write New Blog Post</h3>
-                <input type="text" id="post-title" placeholder="Post Title">
-                <textarea id="post-content" placeholder="Write your blog post content here..."></textarea>
-                <div style="margin-top: 1rem;">
-                    <button onclick="savePost()" class="button">Publish Post</button>
-                    <button onclick="hideEditor()" class="button secondary">Cancel</button>
-                </div>
+            <!-- Admin Login -->
+            <div class="admin-controls" id="adminLogin">
+                <h3 style="color: #8B4513;">Admin Access</h3>
+                <input type="password" id="adminPassword" placeholder="Enter admin password" class="editor-input" style="max-width: 300px; display: inline-block;">
+                <button onclick="login()" class="button">Login</button>
             </div>
             
-            <!-- Add New Post Button -->
-            <div style="text-align: center; margin-bottom: 2rem;">
-                <button onclick="showEditor()" class="button">+ Write New Post</button>
+            <!-- Blog Editor (Admin Only) -->
+            <div class="admin-panel" id="adminPanel">
+                <div class="blog-editor">
+                    <h3 style="color: #8B4513; margin-bottom: 1rem;">Write New Blog Post</h3>
+                    <input type="text" id="post-title" placeholder="Post Title" class="editor-input">
+                    <div id="editor-container"></div>
+                    <div style="margin-top: 1rem;">
+                        <button onclick="savePost()" class="button">Publish Post</button>
+                        <button onclick="hideEditor()" class="button" style="background: #A0522D;">Cancel</button>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin: 2rem 0;">
+                    <button onclick="showEditor()" class="button">+ Write New Post</button>
+                    <button onclick="logout()" class="button" style="background: #A0522D;">Logout</button>
+                </div>
             </div>
             
             <!-- Blog Posts Grid -->
@@ -262,9 +385,48 @@
         </div>
     </div>
 
+    <!-- Your Footer -->
+    <div id="footer">
+        <div class="container">
+            <ul class="icons">
+                <li><a href="https://twitter.com/khawlajaffel" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                <li><a href="https://web.facebook.com/profile.php?id=100074540816904&_rdc=1&_rdr" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                <li><a href="https://github.com/kjaffel" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+                <li><a href="https://www.linkedin.com/in/khawla-jaffel-b726a414a/" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+                <li><a href="https://www.instagram.com/__gamza____/" class="icon brands fa-instagram"><span class="label">instagram</span></a></li>
+            </ul>
+            <div class="copyright">
+                <ul class="menu">
+                    <li>&copy; 2025 Khawla Jaffel</li>
+                    <li>Powered by: <a href="http://html5up.net">HTML5 UP</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Initialize Quill editor
+        const quill = new Quill('#editor-container', {
+            theme: 'snow',
+            modules: {
+                toolbar: [
+                    [{ 'header': [1, 2, 3, false] }],
+                    ['bold', 'italic', 'underline', 'strike'],
+                    [{ 'color': [] }, { 'background': [] }],
+                    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                    [{ 'indent': '-1'}, { 'indent': '+1' }],
+                    ['link', 'image', 'code-block'],
+                    ['blockquote', 'code-block'],
+                    ['clean']
+                ]
+            },
+            placeholder: 'Write your blog post here...'
+        });
+
         // Blog management system
         let posts = JSON.parse(localStorage.getItem('blogPosts')) || [];
+        let isAdmin = localStorage.getItem('isAdmin') === 'true';
+        const ADMIN_PASSWORD = 'physics123'; // Change this to your preferred password
         
         // Sample posts if none exist
         if (posts.length === 0) {
@@ -272,8 +434,16 @@
                 {
                     id: 1,
                     title: "Searching for BSM Higgs Bosons at CMS",
-                    content: `<p>Exploring beyond Standard Model Higgs scenarios and the challenges in detecting these elusive particles in proton-proton collisions...</p>
+                    content: `<h2>Beyond Standard Model Higgs Physics</h2>
+                    <p>Exploring beyond Standard Model Higgs scenarios and the challenges in detecting these elusive particles in proton-proton collisions...</p>
                     <p>The search for new physics beyond the Standard Model is one of the most exciting areas of particle physics today. At the CMS experiment, we're particularly interested in extended Higgs sectors that could reveal new fundamental particles and interactions.</p>
+                    <blockquote>Recent analyses have focused on rare decay channels and precision measurements</blockquote>
+                    <p>Here's a simple code example of our analysis framework:</p>
+                    <pre><code class="language-python">def analyze_higgs_data(dataset):
+    # Process collision events
+    events = process_events(dataset)
+    signals = filter_signals(events)
+    return calculate_significance(signals)</code></pre>
                     <p>Recent analyses have focused on rare decay channels and precision measurements that could provide hints of physics beyond our current understanding.</p>`,
                     date: "May 15, 2023",
                     excerpt: "Exploring beyond Standard Model Higgs scenarios and the challenges in detecting these elusive particles in proton-proton collisions..."
@@ -281,8 +451,31 @@
                 {
                     id: 2,
                     title: "Inside the CMS Detector: A Technical Overview",
-                    content: `<p>A detailed look at the Compact Muon Solenoid detector's components and how they work together to capture collision data...</p>
+                    content: `<h2>The Compact Muon Solenoid Detector</h2>
+                    <p>A detailed look at the Compact Muon Solenoid detector's components and how they work together to capture collision data...</p>
                     <p>The CMS detector is a marvel of modern engineering, consisting of several layers of detection systems arranged in a cylindrical structure around the collision point. Each subsystem plays a crucial role in identifying different types of particles.</p>
+                    <table border="1" style="width:100%; border-collapse: collapse;">
+                        <tr style="background:#8B4513; color:white;">
+                            <th>Component</th>
+                            <th>Purpose</th>
+                            <th>Key Feature</th>
+                        </tr>
+                        <tr>
+                            <td>Inner Tracker</td>
+                            <td>Particle trajectory reconstruction</td>
+                            <td>Silicon pixel and strip detectors</td>
+                        </tr>
+                        <tr>
+                            <td>Electromagnetic Calorimeter</td>
+                            <td>Electron and photon energy measurement</td>
+                            <td>Lead tungstate crystals</td>
+                        </tr>
+                        <tr>
+                            <td>Hadron Calorimeter</td>
+                            <td>Hadron energy measurement</td>
+                            <td>Brass and plastic scintillator</td>
+                        </tr>
+                    </table>
                     <p>From the inner tracker that reconstructs particle trajectories to the calorimeters that measure energy and the muon chambers that identify muons, every component must work in perfect harmony to deliver the precision needed for groundbreaking discoveries.</p>`,
                     date: "April 28, 2023",
                     excerpt: "A detailed look at the Compact Muon Solenoid detector's components and how they work together to capture collision data..."
@@ -291,19 +484,42 @@
             localStorage.setItem('blogPosts', JSON.stringify(posts));
         }
         
+        function login() {
+            const password = document.getElementById('adminPassword').value;
+            if (password === ADMIN_PASSWORD) {
+                isAdmin = true;
+                localStorage.setItem('isAdmin', 'true');
+                document.getElementById('adminPanel').style.display = 'block';
+                document.getElementById('adminLogin').style.display = 'none';
+                renderPosts();
+            } else {
+                alert('Incorrect password');
+            }
+        }
+        
+        function logout() {
+            isAdmin = false;
+            localStorage.setItem('isAdmin', 'false');
+            document.getElementById('adminPanel').style.display = 'none';
+            document.getElementById('adminLogin').style.display = 'block';
+            hideEditor();
+            renderPosts();
+        }
+        
         function showEditor() {
-            document.getElementById('editor').style.display = 'block';
+            document.querySelector('.blog-editor').style.display = 'block';
+            quill.root.innerHTML = '';
         }
         
         function hideEditor() {
-            document.getElementById('editor').style.display = 'none';
+            document.querySelector('.blog-editor').style.display = 'none';
             document.getElementById('post-title').value = '';
-            document.getElementById('post-content').value = '';
+            quill.root.innerHTML = '';
         }
         
         function savePost() {
             const title = document.getElementById('post-title').value;
-            const content = document.getElementById('post-content').value;
+            const content = quill.root.innerHTML;
             
             if (title && content) {
                 const newPost = {
@@ -315,7 +531,7 @@
                         month: 'long', 
                         day: 'numeric' 
                     }),
-                    excerpt: content.substring(0, 150) + (content.length > 150 ? '...' : '')
+                    excerpt: quill.getText().substring(0, 150) + (quill.getText().length > 150 ? '...' : '')
                 };
                 
                 posts.unshift(newPost);
@@ -332,20 +548,23 @@
             container.innerHTML = '';
             
             if (posts.length === 0) {
-                container.innerHTML = '<p style="text-align: center; color: #555; grid-column: 1 / -1;">No blog posts yet. Write your first post!</p>';
+                container.innerHTML = '<p style="text-align: center; color: #555; grid-column: 1 / -1;">No blog posts yet.</p>';
                 return;
             }
             
             posts.forEach(post => {
+                const deleteButton = isAdmin ? 
+                    `<button onclick="deletePost(${post.id})" class="button" style="background: #A0522D; margin-left: 1rem; padding: 8px 16px; font-size: 0.9rem;">Delete</button>` : '';
+                
                 const postHTML = `
                     <article class="blog-card">
                         <img src="https://via.placeholder.com/400x200/8B4513/FFFFFF?text=Physics+Research" alt="${post.title}" class="blog-image">
                         <div class="blog-content">
                             <div class="blog-date">${post.date}</div>
                             <h3 class="blog-title">${post.title}</h3>
-                            <p class="blog-excerpt">${post.excerpt}</p>
+                            <div class="blog-excerpt">${post.excerpt}</div>
                             <a href="#" onclick="viewFullPost(${post.id}); return false;" class="read-more">Read More →</a>
-                            <button onclick="deletePost(${post.id})" class="button secondary" style="margin-left: 1rem; padding: 8px 16px; font-size: 0.9rem;">Delete</button>
+                            ${deleteButton}
                         </div>
                     </article>
                 `;
@@ -388,8 +607,15 @@
             }
         }
         
-        // Initial render
-        renderPosts();
+        // Check admin status on page load
+        window.onload = function() {
+            if (isAdmin) {
+                document.getElementById('adminPanel').style.display = 'block';
+                document.getElementById('adminLogin').style.display = 'none';
+            }
+            renderPosts();
+        }
     </script>
 </body>
 </html>
+
