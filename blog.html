@@ -9,51 +9,58 @@
     <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Futura Light Font -->
-    <link href="https://fonts.cdnfonts.com/css/futura-light" rel="stylesheet">
+    <!-- Google Font: Spinnaker -->
+    <link href="https://fonts.googleapis.com/css2?family=Spinnaker&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/main.css" />
     <style>
-			/* Apply Spinnaker font */
-			body {
-				font-family: 'Spinnaker', sans-serif;
-				background: #fffaf5; /* light beige background */
-				color: #222; /* main text black */
-			}
+        /* Apply Spinnaker font - Match your index.html exactly */
+        body {
+            font-family: 'Spinnaker', sans-serif;
+            background: #fffaf5;
+            color: #222;
+            margin: 0;
+            padding: 0;
+        }
 
-			h1, h2, h3, h4 {
-				color: #8B4513; /* SaddleBrown */
-				font-weight: bold;
-			}
+        h1, h2, h3, h4 {
+            color: #8B4513;
+            font-weight: bold;
+        }
 
-			h2 {
-				color: #A0522D; /* Sienna */
-			}
+        h2 {
+            color: #A0522D;
+        }
 
-			h3 {
-				color: #FF8C00; /* Dark Orange */
-			}
+        h3 {
+            color: #FF8C00;
+        }
 
-			a {
-				color: #FF8C00;
-				text-decoration: none;
-			}
+        a {
+            color: #FF8C00;
+            text-decoration: none;
+        }
 
-			a:hover {
-				color: #8B4513;
-				text-decoration: underline;
-			}
+        a:hover {
+            color: #8B4513;
+            text-decoration: underline;
+        }
 
-			/* Buttons */
-			.button {
-				background: #FF8C00;
-				color: white;
-				border-radius: 6px;
-				padding: 10px 20px;
-				text-transform: uppercase;
-				font-weight: bold;
-			}
-			.button:hover {
-				background: #8B4513;
-			}
+        .button {
+            background: #FF8C00;
+            color: white;
+            border-radius: 6px;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .button:hover {
+            background: #8B4513;
+        }
 
         /* Blog Section Styles */
         .blog-section {
@@ -256,22 +263,26 @@
             border: 1px solid #A0522D;
             border-radius: 4px;
             font-size: 1rem;
+            font-family: 'Spinnaker', sans-serif;
         }
         
         /* Quill Editor Customization */
         .ql-toolbar {
             border-color: #A0522D !important;
             border-radius: 4px 4px 0 0;
+            font-family: 'Spinnaker', sans-serif !important;
         }
         
         .ql-container {
             border-color: #A0522D !important;
             border-radius: 0 0 4px 4px;
             min-height: 200px;
+            font-family: 'Spinnaker', sans-serif !important;
         }
         
         .ql-editor {
             min-height: 300px;
+            font-family: 'Spinnaker', sans-serif !important;
         }
         
         .ql-editor img {
@@ -315,6 +326,7 @@
             z-index: 1000;
             min-width: 250px;
             border: 2px solid #FF8C00;
+            font-family: 'Spinnaker', sans-serif;
         }
         
         .admin-login {
@@ -353,6 +365,7 @@
             border: 1px solid #A0522D;
             border-radius: 4px;
             font-size: 1rem;
+            font-family: 'Spinnaker', sans-serif;
         }
         
         /* Responsive Design */
@@ -380,49 +393,6 @@
             }
         }
 
-        /* Your original footer styles */
-        #footer {
-            background: #8B4513;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-        }
-        #footer a {
-            color: #FFDEAD;
-        }
-        #footer a:hover {
-            color: #FFD700;
-        }
-
-        /* Header styles matching your original */
-        #header {
-            background: #8B4513;
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-        }
-
-        #header a {
-            color: white;
-        }
-
-        #nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 1rem 0 0 0;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-        }
-
-        #nav a {
-            color: #FFDEAD;
-        }
-
-        #nav a:hover {
-            color: #FFD700;
-        }
-
         /* Edit and Delete buttons */
         .admin-actions {
             display: flex;
@@ -436,6 +406,7 @@
             border-radius: 4px;
             cursor: pointer;
             font-size: 0.9rem;
+            font-family: 'Spinnaker', sans-serif;
         }
 
         .edit-btn {
@@ -449,126 +420,143 @@
         }
     </style>
 </head>
-<body>
-    <!-- Your Header -->
-    <div id="header">
-        <header>
-            <h2><a href="index.html" id="logo">Khawla Jaffel</a></h2>
-            <p>Particle Physicist — Postdoc at CERN & USTC.<br/>
-            Member of CMS Experiment at CERN.</p>
-        </header>
+<body class="is-preload">
+    <div id="page-wrapper">
+        <!-- Your Header - Matching index.html structure -->
+        <div id="header">
+            <header>
+                <h2><a href="index.html" id="logo">Khawla Jaffel</a></h2>
+                <p>Particle Physicist — Postdoc at CERN & USTC.<br/>
+                Member of CMS Experiment at CERN.</p>
+            </header>
 
-        <!-- Nav -->
-        <nav id="nav">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="education.html">Education</a></li>
-                <li><a href="talks.html">Talks</a></li>
-                <li class="current"><a href="blog.html">Blog</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </div>
-
-    <!-- Admin Bubble -->
-    <div class="admin-bubble" onclick="toggleAdminPanel()">
-        <i class="fas fa-user-cog"></i>
-    </div>
-
-    <!-- Admin Panel -->
-    <div class="admin-panel" id="adminPanel">
-        <div class="admin-login" id="adminLogin">
-            <h3 style="color: #8B4513; margin-bottom: 1rem;">Admin Login</h3>
-            <input type="password" id="adminPassword" placeholder="Enter password" class="editor-input">
-            <button onclick="login()" class="button" style="width: 100%; margin-top: 1rem;">Login</button>
+            <!-- Nav -->
+            <nav id="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="education.html">Education</a></li>
+                    <li><a href="talks.html">Talks</a></li>
+                    <li class="current"><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-        
-        <div id="adminControls" style="display: none;">
-            <h3 style="color: #8B4513; margin-bottom: 1rem;">Admin Controls</h3>
-            <button onclick="showEditor()" class="button" style="width: 100%; margin-bottom: 0.5rem;">+ New Post</button>
-            <button onclick="logout()" class="button" style="background: #A0522D; width: 100%;">Logout</button>
-        </div>
-    </div>
 
-    <section class="blog-section">
-        <div class="blog-container">
-            <div class="blog-header">
-                <h2>Physics & Research Blog</h2>
-                <p>Insights, discoveries, and thoughts from my work in particle physics at CERN</p>
-            </div>
-            
-            <!-- Blog Editor (Admin Only) -->
-            <div class="blog-editor" id="blogEditor" style="display: none;">
-                <h3 style="color: #8B4513; margin-bottom: 1rem;" id="editorTitle">Write New Blog Post</h3>
-                <input type="text" id="post-title" placeholder="Post Title" class="editor-input">
-                <div id="editor-container"></div>
-                <div style="margin-top: 1rem;">
-                    <button onclick="savePost()" class="button" id="saveButton">Publish Post</button>
-                    <button onclick="hideEditor()" class="button" style="background: #A0522D;">Cancel</button>
+        <!-- Main Content -->
+        <section class="wrapper style1">
+            <div class="container">
+                <div id="content">
+                    <!-- Admin Bubble -->
+                    <div class="admin-bubble" onclick="toggleAdminPanel()">
+                        <i class="fas fa-user-cog"></i>
+                    </div>
+
+                    <!-- Admin Panel -->
+                    <div class="admin-panel" id="adminPanel">
+                        <div class="admin-login" id="adminLogin">
+                            <h3 style="color: #8B4513; margin-bottom: 1rem;">Admin Login</h3>
+                            <input type="password" id="adminPassword" placeholder="Enter password" class="editor-input">
+                            <button onclick="login()" class="button" style="width: 100%; margin-top: 1rem;">Login</button>
+                        </div>
+                        
+                        <div id="adminControls" style="display: none;">
+                            <h3 style="color: #8B4513; margin-bottom: 1rem;">Admin Controls</h3>
+                            <button onclick="showEditor()" class="button" style="width: 100%; margin-bottom: 0.5rem;">+ New Post</button>
+                            <button onclick="logout()" class="button" style="background: #A0522D; width: 100%;">Logout</button>
+                        </div>
+                    </div>
+
+                    <div class="blog-section">
+                        <div class="blog-container">
+                            <div class="blog-header">
+                                <h2>Physics & Research Blog</h2>
+                                <p>Insights, discoveries, and thoughts from my work in particle physics at CERN</p>
+                            </div>
+                            
+                            <!-- Blog Editor (Admin Only) -->
+                            <div class="blog-editor" id="blogEditor" style="display: none;">
+                                <h3 style="color: #8B4513; margin-bottom: 1rem;" id="editorTitle">Write New Blog Post</h3>
+                                <input type="text" id="post-title" placeholder="Post Title" class="editor-input">
+                                <div id="editor-container"></div>
+                                <div style="margin-top: 1rem;">
+                                    <button onclick="savePost()" class="button" id="saveButton">Publish Post</button>
+                                    <button onclick="hideEditor()" class="button" style="background: #A0522D;">Cancel</button>
+                                </div>
+                            </div>
+                            
+                            <!-- Blog Posts Grid -->
+                            <div class="blog-grid" id="posts-container">
+                                <!-- Posts will be dynamically added here -->
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <!-- Blog Posts Grid -->
-            <div class="blog-grid" id="posts-container">
-                <!-- Posts will be dynamically added here -->
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Full Post Modal -->
-    <div class="modal" id="postModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="modal-post-title" style="color: white; margin: 0;"></h2>
-                <button class="close-modal" onclick="closeModal()">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="blog-meta">
-                    <span id="modal-post-date"></span>
-                    <span id="modal-read-time"></span>
+        <!-- Full Post Modal -->
+        <div class="modal" id="postModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modal-post-title" style="color: white; margin: 0;"></h2>
+                    <button class="close-modal" onclick="closeModal()">&times;</button>
                 </div>
-                <div id="modal-post-content"></div>
-                
-                <!-- Like Button in Modal -->
-                <div style="margin: 2rem 0; text-align: center;">
-                    <button class="like-btn" id="modal-like-btn" onclick="likePost(currentPostId)">
-                        <i class="far fa-heart"></i>
-                        <span id="modal-like-count">0</span> Likes
-                    </button>
-                </div>
-                
-                <!-- Comments Section in Modal -->
-                <div class="comments-section">
-                    <h3 style="color: #8B4513;">Comments</h3>
-                    <div id="comments-container"></div>
-                    <div class="comment-form">
-                        <input type="text" id="comment-author" placeholder="Your Name" class="comment-input">
-                        <textarea id="comment-text" placeholder="Your Comment" class="comment-input" rows="3"></textarea>
-                        <button onclick="addComment()" class="button">Post Comment</button>
+                <div class="modal-body">
+                    <div class="blog-meta">
+                        <span id="modal-post-date"></span>
+                        <span id="modal-read-time"></span>
+                    </div>
+                    <div id="modal-post-content"></div>
+                    
+                    <!-- Like Button in Modal -->
+                    <div style="margin: 2rem 0; text-align: center;">
+                        <button class="like-btn" id="modal-like-btn" onclick="likePost(currentPostId)">
+                            <i class="far fa-heart"></i>
+                            <span id="modal-like-count">0</span> Likes
+                        </button>
+                    </div>
+                    
+                    <!-- Comments Section in Modal -->
+                    <div class="comments-section">
+                        <h3 style="color: #8B4513;">Comments</h3>
+                        <div id="comments-container"></div>
+                        <div class="comment-form">
+                            <input type="text" id="comment-author" placeholder="Your Name" class="comment-input">
+                            <textarea id="comment-text" placeholder="Your Comment" class="comment-input" rows="3"></textarea>
+                            <button onclick="addComment()" class="button">Post Comment</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Your Footer -->
-    <div id="footer">
-        <div class="container">
-            <ul class="icons">
-                <li><a href="https://twitter.com/khawlajaffel" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-                <li><a href="https://web.facebook.com/profile.php?id=100074540816904&_rdc=1&_rdr" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-                <li><a href="https://github.com/kjaffel" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-                <li><a href="https://www.linkedin.com/in/khawla-jaffel-b726a414a/" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-                <li><a href="https://www.instagram.com/__gamza____/" class="icon brands fa-instagram"><span class="label">instagram</span></a></li>
-            </ul>
-            <div class="copyright">
-                <ul class="menu">
-                    <li>&copy; 2025 Khawla Jaffel</li>
-                    <li>Powered by: <a href="http://html5up.net">HTML5 UP</a></li>
+        <!-- Your Footer - Matching index.html structure -->
+        <div id="footer">
+            <div class="container">
+                <ul class="icons">
+                    <li><a href="https://twitter.com/khawlajaffel" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="https://web.facebook.com/profile.php?id=100074540816904&_rdc=1&_rdr" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                    <li><a href="https://github.com/kjaffel" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+                    <li><a href="https://www.linkedin.com/in/khawla-jaffel-b726a414a/" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+                    <li><a href="https://www.instagram.com/__gamza____/" class="icon brands fa-instagram"><span class="label">instagram</span></a></li>
                 </ul>
+                <div class="copyright">
+                    <ul class="menu">
+                        <li>&copy; 2025 Khawla Jaffel</li>
+                        <li>Powered by: <a href="http://html5up.net">HTML5 UP</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.dropotron.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
 
     <script>
         // Initialize Quill editor
@@ -594,7 +582,6 @@
         let isAdmin = localStorage.getItem('isAdmin') === 'true';
         let currentPostId = null;
         let editingPostId = null;
-        const ADMIN_PASSWORD = 'physics123'; // Change this to your preferred password
         
         // Initialize likes and comments
         let likes = JSON.parse(localStorage.getItem('blogLikes')) || {};
@@ -630,8 +617,9 @@
         }
         
         function login() {
-            const password = document.getElementById('adminPassword').value;
-            if (password === ADMIN_PASSWORD) {
+            const password = prompt('Enter admin password:');
+            // CHANGE THIS PASSWORD to whatever you want
+            if (password === 'MySecretPhysicsBlog2024!') {
                 isAdmin = true;
                 localStorage.setItem('isAdmin', 'true');
                 document.getElementById('adminLogin').style.display = 'none';
