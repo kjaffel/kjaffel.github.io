@@ -517,12 +517,7 @@ h1, h2, h3, h4{
               <a href="{{ post.url }}">{{ post.title }}</a>
             </h2>
           </div>
-
-          <!-- Featured Image -->
-          {% if post.image %}
-          <img src="{{ post.image }}" alt="{{ post.title }}" class="post-image">
-          {% endif %}
-
+          
           <!-- Post Content Preview -->
           <div class="post-content-preview">
             {% if post.excerpt %}
@@ -532,6 +527,11 @@ h1, h2, h3, h4{
             {% endif %}
             <a href="{{ post.url }}" class="read-more-link">Continue reading →</a>
           </div>
+
+          <!-- Featured Image -->
+          {% if post.image %}
+          <img src="{{ post.image }}" alt="{{ post.title }}" class="post-image">
+          {% endif %}
 
           <!-- Engagement Bar -->
           <div class="engagement-bar">
