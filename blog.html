@@ -589,31 +589,7 @@
         // Initialize likes and comments
         let likes = JSON.parse(localStorage.getItem('blogLikes')) || {};
         let comments = JSON.parse(localStorage.getItem('blogComments')) || {};
-        
-        // Sample posts if none exist
-        if (posts.length === 0) {
-            posts = [
-                {
-                    id: 1,
-                    title: "Searching for BSM Higgs Bosons at CMS",
-                    content: `<h2>Beyond Standard Model Higgs Physics</h2>
-                    <p>Exploring beyond Standard Model Higgs scenarios and the challenges in detecting these elusive particles in proton-proton collisions...</p>
-                    <p>The search for new physics beyond the Standard Model is one of the most exciting areas of particle physics today. At the CMS experiment, we're particularly interested in extended Higgs sectors that could reveal new fundamental particles and interactions.</p>
-                    <blockquote>Recent analyses have focused on rare decay channels and precision measurements</blockquote>
-                    <p>Here's a simple code example of our analysis framework:</p>
-                    <pre><code class="language-python">def analyze_higgs_data(dataset):
-    # Process collision events
-    events = process_events(dataset)
-    signals = filter_signals(events)
-    return calculate_significance(signals)</code></pre>
-                    <p>Recent analyses have focused on rare decay channels and precision measurements that could provide hints of physics beyond our current understanding.</p>`,
-                    date: "May 15, 2023",
-                    excerpt: "Exploring beyond Standard Model Higgs scenarios and the challenges in detecting these elusive particles in proton-proton collisions..."
-                }
-            ];
-            localStorage.setItem('blogPosts', JSON.stringify(posts));
-        }
-        
+                
         function toggleAdminPanel() {
             const panel = document.getElementById('adminPanel');
             panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
