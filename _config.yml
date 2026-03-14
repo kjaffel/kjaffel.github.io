@@ -2,5 +2,10 @@ title: Khawla Jaffel
 description: Physics & Research Blog
 theme: minima
 markdown: kramdown
+
 kramdown:
   math_engine: mathjax
+
+minima:
+  custom_css:
+    - assets/css/main.css
