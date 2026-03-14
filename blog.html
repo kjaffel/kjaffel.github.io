@@ -1,363 +1,824 @@
 ---
 ---
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Khawla Jaffel - Blog</title>
+<title>{{ page.title }} - Khawla Jaffel</title>
 <link href="https://fonts.googleapis.com/css2?family=Spinnaker&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/main.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 <style>
-
+/* Same styles as previous - keeping them compact for brevity */
 body{
-font-family:'Spinnaker',sans-serif;
-background:#fffaf5;
-color:#222;
+  font-family:'Spinnaker',sans-serif;
+  background:#fffaf5;
+  color:#222;
+  line-height:1.6;
 }
 
-h1,h2,h3{
-color:#8B4513;
+h1, h2, h3, h4{
+  color:#8B4513;
 }
 
 .blog-section{
-padding:3rem 0;
-min-height:80vh;
+  padding:3rem 0;
+  min-height:80vh;
 }
 
 .blog-container{
-max-width:1200px;
-margin:auto;
-padding:0 20px;
+  max-width:800px;
+  margin:0 auto;
+  padding:0 20px;
 }
 
 .blog-header{
-text-align:center;
-margin-bottom:3rem;
+  text-align:center;
+  margin-bottom:3rem;
 }
 
 .blog-header h2{
-font-size:2.5rem;
+  font-size:2.5rem;
 }
 
-.blog-grid{
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(350px,1fr));
-gap:2rem;
+/* Blog Post Card - Like Social Media Feed */
+.blog-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  transition: 0.3s;
+  margin-bottom: 2rem;
+  border: 1px solid #eae1d9;
 }
 
-.blog-card{
-background:white;
-border-radius:8px;
-overflow:hidden;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-transition:0.3s;
+.blog-card:hover {
+  box-shadow: 0 5px 20px rgba(139, 69, 19, 0.1);
 }
 
-.blog-card:hover{
-transform:translateY(-5px);
+.post-header {
+  padding: 1.5rem 1.5rem 0.5rem 1.5rem;
 }
 
-.blog-image{
-width:100%;
-height:400px;
-object-fit:cover;
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 0.5rem;
 }
 
-.blog-content{
-padding:1.5rem;
+.author-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #FF8C00;
 }
 
-.blog-title{
-font-size:1.3rem;
-margin-bottom:1rem;
+.author-info {
+  flex: 1;
 }
 
-.blog-excerpt{
-color:#555;
-margin-bottom:1rem;
+.author-name {
+  font-weight: bold;
+  color: #8B4513;
+  font-size: 1.1rem;
+  display: block;
 }
 
-.blog-meta{
-font-size:0.9rem;
-color:#A0522D;
-margin-bottom:0.5rem;
+.post-date {
+  color: #A0522D;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.read-more{
-color:#FF8C00;
-font-weight:bold;
+.post-date i {
+  font-size: 0.8rem;
 }
 
-.like-btn{
-border:none;
-background:none;
-cursor:pointer;
-font-size:1rem;
-color:#A0522D;
+.post-title {
+  font-size: 1.8rem;
+  margin: 0.5rem 0 1rem 0;
+  color: #8B4513;
+  line-height: 1.3;
 }
 
-.comments{
-margin-top:10px;
+.post-title a {
+  color: #8B4513;
+  text-decoration: none;
 }
 
-.comment{
-background:#f5f5f5;
-padding:6px;
-margin-top:5px;
-border-radius:4px;
+.post-title a:hover {
+  color: #FF8C00;
 }
 
+.post-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  margin: 0.5rem 0;
+}
+
+.post-content-preview {
+  padding: 0 1.5rem;
+  color: #444;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.post-content-preview p {
+  margin-bottom: 1rem;
+}
+
+.read-more-link {
+  color: #FF8C00;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+.read-more-link:hover {
+  text-decoration: underline;
+}
+
+.engagement-bar {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #eae1d9;
+  border-bottom: 1px solid #eae1d9;
+  margin: 1rem 1.5rem;
+  flex-wrap: wrap;
+}
+
+.engagement-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.engagement-item i {
+  font-size: 1.1rem;
+  color: #A0522D;
+}
+
+.views-count, .likes-count, .comments-count {
+  font-weight: bold;
+  color: #8B4513;
+  margin-right: 4px;
+}
+
+.like-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #666;
+  font-size: 0.95rem;
+  padding: 5px 10px;
+  border-radius: 20px;
+  transition: background 0.2s;
+}
+
+.like-btn:hover {
+  background: #fff0e6;
+}
+
+.like-btn.liked {
+  color: #ff4444;
+}
+
+.like-btn.liked i {
+  color: #ff4444;
+}
+
+.share-container {
+  position: relative;
+  margin-left: auto;
+}
+
+.share-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #666;
+  font-size: 0.95rem;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.share-btn:hover {
+  background: #fff0e6;
+}
+
+.share-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+  padding: 10px;
+  display: none;
+  z-index: 100;
+  min-width: 200px;
+  margin-top: 5px;
+}
+
+.share-dropdown.show {
+  display: block;
+}
+
+.share-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.share-option:hover {
+  background: #fff0e6;
+}
+
+.share-option i {
+  width: 20px;
+  font-size: 1.1rem;
+}
+
+.comments-section {
+  padding: 0 1.5rem 1.5rem 1.5rem;
+}
+
+.comments-list {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+  padding-right: 10px;
+}
+
+.comment-item {
+  background: #f9f5f0;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+.comment-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #8B4513;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.comment-author {
+  font-weight: bold;
+  color: #8B4513;
+  font-size: 0.9rem;
+}
+
+.comment-text {
+  color: #333;
+  margin-left: 34px;
+  font-size: 0.95rem;
+}
+
+.comment-time {
+  margin-left: 34px;
+  font-size: 0.7rem;
+  color: #A0522D;
+  margin-top: 3px;
+}
+
+.comment-form {
+  display: flex;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.comment-input {
+  flex: 1;
+  padding: 10px;
+  border: 2px solid #eae1d9;
+  border-radius: 20px;
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.comment-input:focus {
+  outline: none;
+  border-color: #FF8C00;
+}
+
+.comment-submit {
+  background: #8B4513;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 0 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.comment-submit:hover {
+  background: #A0522D;
+}
+
+.recent-posts-section {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: #f9f5f0;
+  border-radius: 12px;
+}
+
+.recent-posts-section h3 {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.recent-posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.recent-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s;
+  border: 1px solid #eae1d9;
+}
+
+.recent-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(139, 69, 19, 0.1);
+}
+
+.recent-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.recent-content {
+  padding: 1rem;
+}
+
+.recent-title {
+  font-weight: bold;
+  color: #8B4513;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.recent-meta {
+  display: flex;
+  gap: 15px;
+  font-size: 0.8rem;
+  color: #A0522D;
+}
+
+.recent-meta i {
+  margin-right: 3px;
+}
+
+.see-all {
+  display: block;
+  text-align: center;
+  margin-top: 2rem;
+  color: #8B4513;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.see-all:hover {
+  color: #FF8C00;
+}
+
+@media (max-width: 768px) {
+  .post-title {
+    font-size: 1.5rem;
+  }
+  
+  .engagement-bar {
+    gap: 15px;
+  }
+  
+  .share-container {
+    margin-left: 0;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .share-dropdown {
+    left: 0;
+    right: auto;
+  }
+  
+  .comment-form {
+    flex-direction: column;
+  }
+  
+  .comment-submit {
+    padding: 10px;
+  }
+  
+  .recent-posts-grid {
+    grid-template-columns: 1fr;
+  }
+}
 </style>
-
 </head>
 
 <body>
-
 <div id="page-wrapper">
 
-<div id="header">
+  <!-- Header -->
+  <div id="header">
+    <header>
+      <h2><a href="index.html" id="logo">Khawla Jaffel</a></h2>
+      <p>Particle Physicist — Postdoc at CERN & KBFI/NICPB (Tallinn). <br> Member of CMS Experiment at CERN.</p>
+    </header>
 
-<header>
-<h2><a href="index.html" id="logo">Khawla Jaffel</a></h2>
+    <nav id="nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li><a href="talks.html">Talks</a></li>
+        <li class="current"><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
 
-<p>
-Particle Physicist — Postdoc at CERN & KBFI/NICPB (Tallinn). <br>
-Member of CMS Experiment at CERN.
-</p>
-
-</header>
-
-<nav id="nav">
-<ul>
-
-<li><a href="index.html">Home</a></li>
-<li><a href="education.html">Education</a></li>
-<li><a href="talks.html">Talks</a></li>
-<li class="current"><a href="blog.html">Blog</a></li>
-<li><a href="contact.html">Contact</a></li>
-
-</ul>
-</nav>
-</div>
-
-<section class="wrapper style1">
-  <div class="blog-section">
-    <div class="blog-container">
-        {% for post in site.posts %}
-        <article class="blog-card">
-          <img class="blog-image" src="{{ post.image }}">
-          <div class="blog-content">
-            <div class="blog-author">
-              <span class="author-name">Khawla Jaffel</span>
-              • {{ post.date | date: "%b %d, %Y" }}
-              • {{ post.content | number_of_words | divided_by:200 }} min read
+  <!-- Main Blog Section -->
+  <section class="wrapper style1">
+    <div class="blog-section">
+      <div class="blog-container">
+        <!-- Blog Posts Loop from _posts -->
+        {% assign posts = site.posts | sort: 'date' | reverse %}
+        {% for post in posts %}
+        <article class="blog-card" data-post-id="{{ post.id | slugify }}">
+          
+          <!-- Post Header -->
+          <div class="post-header">
+            <div class="post-meta">
+              <img src="/images/avatar.png" alt="Khawla Jaffel" class="author-avatar">
+              <div class="author-info">
+                <span class="author-name">Khawla Jaffel</span>
+                <span class="post-date">
+                  <i class="far fa-calendar-alt"></i> {{ post.date | date: "%b %d, %Y" }}
+                  <i class="far fa-clock"></i> 
+                  {% assign words = post.content | number_of_words %}
+                  {% if words < 360 %}
+                    1 min read
+                  {% else %}
+                    {{ words | divided_by:180 }} min read
+                  {% endif %}
+                </span>
+              </div>
             </div>
-        
-            <h2 class="blog-title">{{ post.title }}</h2>
-        
-            <p class="blog-excerpt">{{ post.excerpt | strip_html | truncate:160 }}</p>
-        
-            <a href="{{ post.url }}" class="read-more">Continue reading →</a>
+            
+            <h2 class="post-title">
+              <a href="{{ post.url }}">{{ post.title }}</a>
+            </h2>
+          </div>
+
+          <!-- Featured Image -->
+          {% if post.image %}
+          <img src="{{ post.image }}" alt="{{ post.title }}" class="post-image">
+          {% endif %}
+
+          <!-- Post Content Preview -->
+          <div class="post-content-preview">
+            {% if post.excerpt %}
+              {{ post.excerpt | strip_html | truncate: 300 }}
+            {% else %}
+              {{ post.content | strip_html | truncate: 300 }}
+            {% endif %}
+            <a href="{{ post.url }}" class="read-more-link">Continue reading →</a>
+          </div>
+
+          <!-- Engagement Bar -->
+          <div class="engagement-bar">
+            <div class="engagement-item">
+              <i class="far fa-eye"></i>
+              <span class="views-count" id="views-{{ post.id | slugify }}">0</span>
+              <span>views</span>
+            </div>
+            
+            <button class="like-btn" onclick="toggleLike('{{ post.id | slugify }}')" id="like-btn-{{ post.id | slugify }}">
+              <i class="far fa-heart"></i>
+              <span class="likes-count" id="likes-{{ post.id | slugify }}">0</span>
+            </button>
+
+            <div class="engagement-item">
+              <i class="far fa-comment"></i>
+              <span class="comments-count" id="comments-count-{{ post.id | slugify }}">0</span>
+              <span>comments</span>
+            </div>
+
+            <!-- Share Dropdown -->
+            <div class="share-container">
+              <button class="share-btn" onclick="toggleShare(this)">
+                <i class="far fa-share-square"></i> Share
+              </button>
+              <div class="share-dropdown">
+                <a href="https://twitter.com/intent/tweet?url={{ site.url }}{{ post.url }}&text={{ post.title }}" 
+                   target="_blank" class="share-option">
+                  <i class="fab fa-twitter" style="color:#1DA1F2;"></i> Twitter
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ post.url }}" 
+                   target="_blank" class="share-option">
+                  <i class="fab fa-facebook-f" style="color:#4267B2;"></i> Facebook
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.url }}{{ post.url }}" 
+                   target="_blank" class="share-option">
+                  <i class="fab fa-linkedin-in" style="color:#0077B5;"></i> LinkedIn
+                </a>
+                <a href="https://www.instagram.com/?url={{ site.url }}{{ post.url }}" 
+                   target="_blank" class="share-option">
+                  <i class="fab fa-instagram" style="color:#E4405F;"></i> Instagram
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Comments Section -->
+          <div class="comments-section">
+            <div class="comments-list" id="comments-{{ post.id | slugify }}">
+              <!-- Comments will be loaded here -->
+            </div>
+
+            <div class="comment-form">
+              <input type="text" 
+                     id="comment-input-{{ post.id | slugify }}" 
+                     class="comment-input" 
+                     placeholder="Write a comment..." 
+                     maxlength="500">
+              <button class="comment-submit" onclick="addComment('{{ post.id | slugify }}')">
+                <i class="far fa-paper-plane"></i>
+              </button>
+            </div>
           </div>
         </article>
         {% endfor %}
 
-          <div class="blog-footer">
-            <span class="views">views <span id="views-{{ post.id }}">0</span></span>
-            <button onclick="likePost('{{ post.id }}')" class="like-btn">
-              ❤️ <span id="likes-{{ post.id }}">0</span>
-            </button>
-            <a href="{{ post.url }}" class="read-more">Continue reading →</a>
+        <!-- Recent Posts Section -->
+        <div class="recent-posts-section">
+          <h3>Recent Posts</h3>
+          <div class="recent-posts-grid">
+            {% for post in posts limit:4 %}
+            <a href="{{ post.url }}" class="recent-card">
+              {% if post.image %}
+              <img src="{{ post.image }}" alt="{{ post.title }}" class="recent-image">
+              {% endif %}
+              <div class="recent-content">
+                <div class="recent-title">{{ post.title }}</div>
+                <div class="recent-meta">
+                  <span><i class="far fa-calendar"></i> {{ post.date | date: "%b %d" }}</span>
+                  <span><i class="far fa-heart"></i> <span id="recent-likes-{{ post.id | slugify }}">0</span></span>
+                  <span><i class="far fa-comment"></i> <span id="recent-comments-{{ post.id | slugify }}">0</span></span>
+                </div>
+              </div>
+            </a>
+            {% endfor %}
           </div>
-
-          <!-- Comments for this post -->
-          <div class="comments">
-            <div id="comments-{{ post.id }}"></div>
-            <input
-              id="input-{{ post.id }}"
-              placeholder="Write a comment..."
-              style="width:100%;padding:6px;margin-top:5px">
-            <button onclick="addComment('{{ post.id }}')">Post</button>
-          </div>
-
-          <!-- Social share buttons for this post -->
-          <ul class="icons share-icons">
-            <li>
-              <a target="_blank"
-                 href="https://twitter.com/intent/tweet?url={{ site.url }}{{ post.url }}"
-                 class="icon brands fa-twitter">
-                <span class="label">Twitter</span>
-              </a>
-            </li>
-            <li>
-              <a target="_blank"
-                 href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ post.url }}"
-                 class="icon brands fa-facebook-f">
-                <span class="label">Facebook</span>
-              </a>
-            </li>
-            <li>
-              <a target="_blank"
-                 href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.url }}{{ post.url }}"
-                 class="icon brands fa-linkedin-in">
-                <span class="label">LinkedIn</span>
-              </a>
-            </li>
-            <li>
-              <a target="_blank"
-                 href="https://www.instagram.com/?url={{ site.url }}{{ post.url }}"
-                 class="icon brands fa-instagram">
-                <span class="label">Instagram</span>
-              </a>
-            </li>
-          </ul>
-
+          <a href="/blog.html" class="see-all">See All Posts →</a>
         </div>
+
+      </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Recent Posts (exclude current post if you want) -->
-  <h2 style="margin-bottom:20px">Recent Posts</h2>
-  <div class="recent-posts">
-    {% for post in site.posts limit:3 %}
-      <a href="{{ post.url }}" class="recent-link">{{ post.title }}</a>
-    {% endfor %}
-  </div>
-
-</section>
-
-
-<div id="footer">
-<div class="container">
-    <ul class="icons">
-        <li><a href="https://twitter.com/khawlajaffel" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-        <li><a href="https://web.facebook.com/profile.php?id=100074540816904&_rdc=1&_rdr" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-        <li><a href="https://github.com/kjaffel" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-        <li><a href="https://www.linkedin.com/in/khawla-jaffel-b726a414a/" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-        <li><a href="https://www.instagram.com/__gamza____/" class="icon brands fa-instagram"><span class="label">instagram</span></a></li>
-    </ul>
-    <div class="copyright">
+  <!-- Footer -->
+  <div id="footer">
+    <div class="container">
+      <ul class="icons">
+        <!-- Add your social media icons here -->
+      </ul>
+      <div class="copyright">
         <ul class="menu">
-            <li>&copy; 2026 Khawla Jaffel</li>
-            <li>Powered by: <a href="http://html5up.net">HTML5 UP</a></li>
+          <li>© 2026 Khawla Jaffel</li>
+          <li>Powered by HTML5 UP</li>
         </ul>
+      </div>
     </div>
-</div>
-</div>
+  </div>
 
+</div>
 
 <script>
+// Initialize storage
+let likes = JSON.parse(localStorage.getItem("likes") || "{}");
+let views = JSON.parse(localStorage.getItem("views") || "{}");
+let comments = JSON.parse(localStorage.getItem("comments") || "{}");
 
-function likePost(id){
-
-let likes = JSON.parse(localStorage.getItem("likes")||"{}")
-
-likes[id]=(likes[id]||0)+1
-
-localStorage.setItem("likes",JSON.stringify(likes))
-
-document.getElementById("likes-"+id).innerText=likes[id]
-
+// Toggle share dropdown
+function toggleShare(button) {
+  const dropdown = button.nextElementSibling;
+  dropdown.classList.toggle('show');
+  
+  // Close when clicking outside
+  document.addEventListener('click', function closeDropdown(e) {
+    if (!button.contains(e.target) && !dropdown.contains(e.target)) {
+      dropdown.classList.remove('show');
+      document.removeEventListener('click', closeDropdown);
+    }
+  });
 }
 
-function addComment(id){
-
-let input=document.getElementById("input-"+id)
-
-let text=input.value
-
-if(!text)return
-
-let comments=JSON.parse(localStorage.getItem("comments")||"{}")
-
-if(!comments[id])comments[id]=[]
-
-comments[id].push(text)
-
-localStorage.setItem("comments",JSON.stringify(comments))
-
-renderComments()
-
-input.value=""
-
+// Toggle like
+function toggleLike(postId) {
+  let likeBtn = document.getElementById("like-btn-" + postId);
+  let likeCount = document.getElementById("likes-" + postId);
+  
+  if (!likes[postId]) likes[postId] = 0;
+  
+  if (likeBtn.classList.contains("liked")) {
+    likes[postId]--;
+    likeBtn.classList.remove("liked");
+    likeBtn.querySelector("i").className = "far fa-heart";
+  } else {
+    likes[postId]++;
+    likeBtn.classList.add("liked");
+    likeBtn.querySelector("i").className = "fas fa-heart";
+  }
+  
+  likeCount.innerText = likes[postId];
+  localStorage.setItem("likes", JSON.stringify(likes));
+  
+  // Update recent posts likes
+  updateRecentPostStats();
 }
 
-
-function registerView(id){
-
-let views = JSON.parse(localStorage.getItem("views")||"{}")
-
-views[id]=(views[id]||0)+1
-
-localStorage.setItem("views",JSON.stringify(views))
-
-let el=document.getElementById("views-"+id)
-
-if(el) el.innerText=views[id]
-
+// Add comment
+function addComment(postId) {
+  let input = document.getElementById("comment-input-" + postId);
+  let text = input.value.trim();
+  
+  if (!text) return;
+  
+  if (!comments[postId]) comments[postId] = [];
+  
+  comments[postId].push({
+    text: text,
+    author: "Guest",
+    timestamp: new Date().toLocaleString()
+  });
+  
+  localStorage.setItem("comments", JSON.stringify(comments));
+  
+  // Clear input
+  input.value = "";
+  
+  // Refresh comments display
+  renderComments(postId);
+  updateCommentCount(postId);
+  updateRecentPostStats();
 }
 
-
-
-
-function renderComments(){
-
-let comments=JSON.parse(localStorage.getItem("comments")||"{}")
-
-for(let id in comments){
-
-let container=document.getElementById("comments-"+id)
-
-if(!container)continue
-
-container.innerHTML=""
-
-comments[id].forEach(c=>{
-
-let div=document.createElement("div")
-
-div.className="comment"
-
-div.innerText=c
-
-container.appendChild(div)
-
-})
-
+// Render comments for a post
+function renderComments(postId) {
+  let container = document.getElementById("comments-" + postId);
+  if (!container) return;
+  
+  container.innerHTML = "";
+  
+  if (comments[postId] && comments[postId].length > 0) {
+    // Show only last 3 comments
+    const recentComments = comments[postId].slice(-3);
+    
+    recentComments.forEach(comment => {
+      let commentDiv = document.createElement("div");
+      commentDiv.className = "comment-item";
+      
+      let initial = comment.author ? comment.author.charAt(0).toUpperCase() : "G";
+      
+      commentDiv.innerHTML = `
+        <div class="comment-header">
+          <div class="comment-avatar">${initial}</div>
+          <span class="comment-author">${comment.author || "Guest"}</span>
+        </div>
+        <div class="comment-text">${comment.text}</div>
+        <div class="comment-time">${comment.timestamp || "Just now"}</div>
+      `;
+      
+      container.appendChild(commentDiv);
+    });
+    
+    if (comments[postId].length > 3) {
+      let moreDiv = document.createElement("div");
+      moreDiv.style.textAlign = "center";
+      moreDiv.style.padding = "10px";
+      moreDiv.style.color = "#8B4513";
+      moreDiv.innerHTML = `<i class="far fa-comments"></i> View all ${comments[postId].length} comments`;
+      container.appendChild(moreDiv);
+    }
+  }
 }
 
+// Update comment count
+function updateCommentCount(postId) {
+  let countEl = document.getElementById("comments-count-" + postId);
+  if (countEl) {
+    let count = comments[postId] ? comments[postId].length : 0;
+    countEl.innerText = count;
+  }
 }
 
-window.onload=function(){
-
-renderComments()
-
-let likes=JSON.parse(localStorage.getItem("likes")||"{}")
-
-for(let id in likes){
-
-let el=document.getElementById("likes-"+id)
-
-if(el)el.innerText=likes[id]
-
+// Update recent posts stats
+function updateRecentPostStats() {
+  for (let postId in likes) {
+    let recentLikeEl = document.getElementById("recent-likes-" + postId);
+    if (recentLikeEl) recentLikeEl.innerText = likes[postId];
+  }
+  
+  for (let postId in comments) {
+    let recentCommentEl = document.getElementById("recent-comments-" + postId);
+    if (recentCommentEl) recentCommentEl.innerText = comments[postId].length;
+  }
 }
 
-let views = JSON.parse(localStorage.getItem("views")||"{}")
-
-for(let id in views){
-
-let el=document.getElementById("views-"+id)
-
-if(el) el.innerText=views[id]
-
+// Register view
+function registerView(postId) {
+  if (!views[postId]) views[postId] = 0;
+  views[postId]++;
+  localStorage.setItem("views", JSON.stringify(views));
+  
+  let viewEl = document.getElementById("views-" + postId);
+  if (viewEl) viewEl.innerText = views[postId];
 }
 
-}
-
+// Initialize page
+document.addEventListener('DOMContentLoaded', function() {
+  // Get all post IDs from the page
+  const posts = document.querySelectorAll('.blog-card');
+  
+  posts.forEach(post => {
+    const postId = post.dataset.postId;
+    
+    // Register view for this post
+    registerView(postId);
+    
+    // Load likes
+    if (likes[postId]) {
+      let likeCount = document.getElementById("likes-" + postId);
+      if (likeCount) likeCount.innerText = likes[postId];
+    }
+    
+    // Load comments
+    renderComments(postId);
+    updateCommentCount(postId);
+  });
+  
+  // Load recent posts stats
+  updateRecentPostStats();
+  
+  // Close share dropdowns when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.share-container')) {
+      document.querySelectorAll('.share-dropdown').forEach(dropdown => {
+        dropdown.classList.remove('show');
+      });
+    }
+  });
+});
 </script>
 
 </body>
-
 </html>
-
