@@ -1,363 +1,668 @@
 ---
+layout: default
 ---
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Khawla Jaffel - Blog</title>
+<title>{{ page.title }} - Khawla Jaffel Blog</title>
 <link href="https://fonts.googleapis.com/css2?family=Spinnaker&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/main.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 <style>
-
 body{
-font-family:'Spinnaker',sans-serif;
-background:#fffaf5;
-color:#222;
+  font-family:'Spinnaker',sans-serif;
+  background:#fffaf5;
+  color:#222;
+  line-height:1.6;
 }
 
-h1,h2,h3{
-color:#8B4513;
+h1, h2, h3, h4{
+  color:#8B4513;
 }
 
-.blog-section{
-padding:3rem 0;
-min-height:80vh;
+/* Blog Post Styles */
+.blog-post-section {
+  padding: 2rem 0;
+  min-height: 80vh;
 }
 
-.blog-container{
-max-width:1200px;
-margin:auto;
-padding:0 20px;
+.blog-post-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-.blog-header{
-text-align:center;
-margin-bottom:3rem;
+.post-header {
+  margin-bottom: 2rem;
 }
 
-.blog-header h2{
-font-size:2.5rem;
+.post-meta-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #A0522D;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
 }
 
-.blog-grid{
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(350px,1fr));
-gap:2rem;
+.author-avatar-small {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
-.blog-card{
-background:white;
-border-radius:8px;
-overflow:hidden;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-transition:0.3s;
+.post-title {
+  font-size: 2.5rem;
+  margin: 0.5rem 0 1rem 0;
+  line-height: 1.2;
 }
 
-.blog-card:hover{
-transform:translateY(-5px);
+.post-date {
+  color: #8B4513;
+  font-size: 1rem;
+  margin-bottom: 1rem;
 }
 
-.blog-image{
-width:100%;
-height:400px;
-object-fit:cover;
+.post-featured-image {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-.blog-content{
-padding:1.5rem;
+.post-content {
+  font-size: 1.1rem;
+  margin: 2rem 0;
 }
 
-.blog-title{
-font-size:1.3rem;
-margin-bottom:1rem;
+.post-content p {
+  margin-bottom: 1.5rem;
 }
 
-.blog-excerpt{
-color:#555;
-margin-bottom:1rem;
+/* Engagement Bar */
+.engagement-bar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 15px 0;
+  border-top: 1px solid #e0d6cc;
+  border-bottom: 1px solid #e0d6cc;
+  margin: 2rem 0;
+  flex-wrap: wrap;
 }
 
-.blog-meta{
-font-size:0.9rem;
-color:#A0522D;
-margin-bottom:0.5rem;
+.engagement-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #666;
 }
 
-.read-more{
-color:#FF8C00;
-font-weight:bold;
+.views-count, .likes-count {
+  font-weight: bold;
+  color: #8B4513;
 }
 
-.like-btn{
-border:none;
-background:none;
-cursor:pointer;
-font-size:1rem;
-color:#A0522D;
+.like-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #A0522D;
+  transition: transform 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
-.comments{
-margin-top:10px;
+.like-button:hover {
+  transform: scale(1.1);
 }
 
-.comment{
-background:#f5f5f5;
-padding:6px;
-margin-top:5px;
-border-radius:4px;
+.like-button.liked .like-icon {
+  color: #ff4444;
 }
 
+.share-buttons {
+  display: flex;
+  gap: 15px;
+  margin-left: auto;
+}
+
+.share-button {
+  color: #A0522D;
+  font-size: 1.2rem;
+  transition: color 0.2s;
+}
+
+.share-button:hover {
+  color: #8B4513;
+}
+
+/* Comments Section */
+.comments-section {
+  margin: 3rem 0;
+}
+
+.comments-section h3 {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.comment-form {
+  margin-bottom: 2rem;
+}
+
+.comment-input-wrapper {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 0.5rem;
+}
+
+.comment-input {
+  flex: 1;
+  padding: 12px;
+  border: 2px solid #e0d6cc;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.comment-input:focus {
+  outline: none;
+  border-color: #8B4513;
+}
+
+.comment-submit {
+  padding: 12px 24px;
+  background: #8B4513;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.comment-submit:hover {
+  background: #A0522D;
+}
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.comment-item {
+  background: #f9f5f0;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid #FF8C00;
+}
+
+.comment-author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  color: #8B4513;
+  font-weight: bold;
+}
+
+.comment-avatar {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #8B4513;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.comment-text {
+  color: #333;
+  margin-left: 35px;
+}
+
+.comment-meta {
+  margin-left: 35px;
+  font-size: 0.8rem;
+  color: #A0522D;
+  margin-top: 5px;
+}
+
+/* Recent Posts Sidebar */
+.recent-posts-sidebar {
+  background: #f9f5f0;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-top: 3rem;
+}
+
+.recent-posts-sidebar h4 {
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+}
+
+.recent-posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.recent-post-item {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  padding: 10px;
+  background: white;
+  border-radius: 6px;
+  transition: transform 0.2s;
+}
+
+.recent-post-item:hover {
+  transform: translateX(5px);
+}
+
+.recent-post-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.recent-post-info {
+  flex: 1;
+}
+
+.recent-post-title {
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.recent-post-title:hover {
+  color: #8B4513;
+}
+
+.recent-post-stats {
+  display: flex;
+  gap: 10px;
+  font-size: 0.8rem;
+  color: #A0522D;
+  margin-top: 5px;
+}
+
+/* Update notice */
+.update-notice {
+  background: #f0e7de;
+  padding: 10px 15px;
+  border-radius: 6px;
+  color: #8B4513;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .post-title {
+    font-size: 2rem;
+  }
+  
+  .engagement-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .share-buttons {
+    margin-left: 0;
+  }
+  
+  .comment-input-wrapper {
+    flex-direction: column;
+  }
+}
 </style>
-
 </head>
 
 <body>
-
 <div id="page-wrapper">
 
-<div id="header">
+  <!-- Header -->
+  <div id="header">
+    <header>
+      <h2><a href="index.html" id="logo">Khawla Jaffel</a></h2>
+      <p>Particle Physicist — Postdoc at CERN & KBFI/NICPB (Tallinn). <br> Member of CMS Experiment at CERN.</p>
+    </header>
 
-<header>
-<h2><a href="index.html" id="logo">Khawla Jaffel</a></h2>
+    <nav id="nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li><a href="talks.html">Talks</a></li>
+        <li class="current"><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
 
-<p>
-Particle Physicist — Postdoc at CERN & KBFI/NICPB (Tallinn). <br>
-Member of CMS Experiment at CERN.
-</p>
-
-</header>
-
-<nav id="nav">
-<ul>
-
-<li><a href="index.html">Home</a></li>
-<li><a href="education.html">Education</a></li>
-<li><a href="talks.html">Talks</a></li>
-<li class="current"><a href="blog.html">Blog</a></li>
-<li><a href="contact.html">Contact</a></li>
-
-</ul>
-</nav>
-</div>
-
-<section class="wrapper style1">
-  <div class="blog-section">
-    <div class="blog-container">
-        {% for post in site.posts %}
-        <article class="blog-card">
-          <img class="blog-image" src="{{ post.image }}">
-          <div class="blog-content">
-            <div class="blog-author">
-              <span class="author-name">Khawla Jaffel</span>
-              • {{ post.date | date: "%b %d, %Y" }}
-              • {{ post.content | number_of_words | divided_by:200 }} min read
-            </div>
+  <!-- Main Content -->
+  <section class="wrapper style1">
+    <div class="blog-post-section">
+      <div class="blog-post-container">
         
-            <h2 class="blog-title">{{ post.title }}</h2>
-        
-            <p class="blog-excerpt">{{ post.excerpt | strip_html | truncate:160 }}</p>
-        
-            <a href="{{ post.url }}" class="read-more">Continue reading →</a>
+        <!-- Post Header -->
+        <div class="post-header">
+          <div class="post-meta-top">
+            <img src="/images/avatar.png" class="author-avatar-small" alt="Khawla Jaffel">
+            <span>Khawla Jaffel</span>
+            <span>•</span>
+            <span>{{ page.date | date: "%b %d, %Y" }}</span>
+            <span>•</span>
+            <span>{{ content | number_of_words | divided_by: 200 }} min read</span>
           </div>
-        </article>
-        {% endfor %}
-
-          <div class="blog-footer">
-            <span class="views">views <span id="views-{{ post.id }}">0</span></span>
-            <button onclick="likePost('{{ post.id }}')" class="like-btn">
-              ❤️ <span id="likes-{{ post.id }}">0</span>
-            </button>
-            <a href="{{ post.url }}" class="read-more">Continue reading →</a>
+          
+          <h1 class="post-title">{{ page.title }}</h1>
+          
+          {% if page.updated %}
+          <div class="update-notice">
+            Updated: {{ page.updated | date: "%b %d, %Y" }}
           </div>
-
-          <!-- Comments for this post -->
-          <div class="comments">
-            <div id="comments-{{ post.id }}"></div>
-            <input
-              id="input-{{ post.id }}"
-              placeholder="Write a comment..."
-              style="width:100%;padding:6px;margin-top:5px">
-            <button onclick="addComment('{{ post.id }}')">Post</button>
+          {% endif %}
+          
+          <div class="post-date">
+            <i class="far fa-calendar-alt"></i> {{ page.date | date: "%B %d, %Y" }}
           </div>
-
-          <!-- Social share buttons for this post -->
-          <ul class="icons share-icons">
-            <li>
-              <a target="_blank"
-                 href="https://twitter.com/intent/tweet?url={{ site.url }}{{ post.url }}"
-                 class="icon brands fa-twitter">
-                <span class="label">Twitter</span>
-              </a>
-            </li>
-            <li>
-              <a target="_blank"
-                 href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ post.url }}"
-                 class="icon brands fa-facebook-f">
-                <span class="label">Facebook</span>
-              </a>
-            </li>
-            <li>
-              <a target="_blank"
-                 href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.url }}{{ post.url }}"
-                 class="icon brands fa-linkedin-in">
-                <span class="label">LinkedIn</span>
-              </a>
-            </li>
-            <li>
-              <a target="_blank"
-                 href="https://www.instagram.com/?url={{ site.url }}{{ post.url }}"
-                 class="icon brands fa-instagram">
-                <span class="label">Instagram</span>
-              </a>
-            </li>
-          </ul>
-
         </div>
+
+        <!-- Featured Image -->
+        {% if page.image %}
+        <img class="post-featured-image" src="{{ page.image }}" alt="{{ page.title }}">
+        {% endif %}
+
+        <!-- Post Content -->
+        <div class="post-content">
+          {{ content }}
+        </div>
+
+        <!-- Engagement Bar (Views, Likes, Shares) -->
+        <div class="engagement-bar">
+          <div class="engagement-item">
+            <i class="far fa-eye"></i>
+            <span class="views-count" id="views-{{ page.id }}">0</span>
+            <span>views</span>
+          </div>
+          
+          <div class="engagement-item">
+            <button onclick="toggleLike('{{ page.id }}')" class="like-button" id="like-btn-{{ page.id }}">
+              <i class="far fa-heart like-icon"></i>
+              <span class="likes-count" id="likes-{{ page.id }}">0</span>
+            </button>
+          </div>
+
+          <div class="share-buttons">
+            <a href="https://twitter.com/intent/tweet?url={{ site.url }}{{ page.url }}&text={{ page.title }}" 
+               target="_blank" class="share-button" title="Share on Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}" 
+               target="_blank" class="share-button" title="Share on Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.url }}{{ page.url }}" 
+               target="_blank" class="share-button" title="Share on LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://www.instagram.com/?url={{ site.url }}{{ page.url }}" 
+               target="_blank" class="share-button" title="Share on Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Comments Section -->
+        <div class="comments-section">
+          <h3>Comments <span id="comments-count-{{ page.id }}">(0)</span></h3>
+          
+          <div class="comment-form">
+            <div class="comment-input-wrapper">
+              <input type="text" 
+                     id="comment-input-{{ page.id }}" 
+                     class="comment-input" 
+                     placeholder="Write a comment..." 
+                     maxlength="500">
+              <button onclick="addComment('{{ page.id }}')" class="comment-submit">
+                <i class="far fa-paper-plane"></i> Post
+              </button>
+            </div>
+          </div>
+
+          <div class="comments-list" id="comments-{{ page.id }}">
+            <!-- Comments will be loaded here dynamically -->
+          </div>
+        </div>
+
+        <!-- Recent Posts -->
+        <div class="recent-posts-sidebar">
+          <h4>Recent Posts</h4>
+          <div class="recent-posts-list">
+            {% for post in site.posts limit:3 %}
+              {% if post.id != page.id %}
+              <div class="recent-post-item">
+                {% if post.image %}
+                <img src="{{ post.image }}" class="recent-post-image" alt="{{ post.title }}">
+                {% endif %}
+                <div class="recent-post-info">
+                  <a href="{{ post.url }}" class="recent-post-title">{{ post.title }}</a>
+                  <div class="recent-post-stats">
+                    <span><i class="far fa-heart"></i> <span id="recent-likes-{{ post.id }}">0</span></span>
+                    <span><i class="far fa-comment"></i> <span id="recent-comments-{{ post.id }}">0</span></span>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <a href="/blog.html" style="display:block; text-align:center; margin-top:1.5rem; color:#8B4513; font-weight:bold;">
+            See All Posts →
+          </a>
+        </div>
+
+      </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Recent Posts (exclude current post if you want) -->
-  <h2 style="margin-bottom:20px">Recent Posts</h2>
-  <div class="recent-posts">
-    {% for post in site.posts limit:3 %}
-      <a href="{{ post.url }}" class="recent-link">{{ post.title }}</a>
-    {% endfor %}
-  </div>
-
-</section>
-
-
-<div id="footer">
-<div class="container">
-    <ul class="icons">
-        <li><a href="https://twitter.com/khawlajaffel" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-        <li><a href="https://web.facebook.com/profile.php?id=100074540816904&_rdc=1&_rdr" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-        <li><a href="https://github.com/kjaffel" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-        <li><a href="https://www.linkedin.com/in/khawla-jaffel-b726a414a/" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-        <li><a href="https://www.instagram.com/__gamza____/" class="icon brands fa-instagram"><span class="label">instagram</span></a></li>
-    </ul>
-    <div class="copyright">
+  <!-- Footer -->
+  <div id="footer">
+    <div class="container">
+      <ul class="icons">
+        <!-- Add your social media icons here -->
+      </ul>
+      <div class="copyright">
         <ul class="menu">
-            <li>&copy; 2026 Khawla Jaffel</li>
-            <li>Powered by: <a href="http://html5up.net">HTML5 UP</a></li>
+          <li>© 2026 Khawla Jaffel</li>
+          <li>Powered by HTML5 UP</li>
         </ul>
+      </div>
     </div>
-</div>
+  </div>
+
 </div>
 
-
+<!-- JavaScript for interactions -->
 <script>
+// Initialize storage
+let likes = JSON.parse(localStorage.getItem("likes") || "{}");
+let views = JSON.parse(localStorage.getItem("views") || "{}");
+let comments = JSON.parse(localStorage.getItem("comments") || "{}");
 
-function likePost(id){
-
-let likes = JSON.parse(localStorage.getItem("likes")||"{}")
-
-likes[id]=(likes[id]||0)+1
-
-localStorage.setItem("likes",JSON.stringify(likes))
-
-document.getElementById("likes-"+id).innerText=likes[id]
-
+// Register view on page load
+function registerView(postId) {
+  views[postId] = (views[postId] || 0) + 1;
+  localStorage.setItem("views", JSON.stringify(views));
+  
+  let viewEl = document.getElementById("views-" + postId);
+  if (viewEl) viewEl.innerText = views[postId];
 }
 
-function addComment(id){
-
-let input=document.getElementById("input-"+id)
-
-let text=input.value
-
-if(!text)return
-
-let comments=JSON.parse(localStorage.getItem("comments")||"{}")
-
-if(!comments[id])comments[id]=[]
-
-comments[id].push(text)
-
-localStorage.setItem("comments",JSON.stringify(comments))
-
-renderComments()
-
-input.value=""
-
+// Toggle like
+function toggleLike(postId) {
+  let likeBtn = document.getElementById("like-btn-" + postId);
+  let likeCount = document.getElementById("likes-" + postId);
+  
+  if (!likes[postId]) likes[postId] = 0;
+  
+  if (likeBtn.classList.contains("liked")) {
+    likes[postId]--;
+    likeBtn.classList.remove("liked");
+    likeBtn.querySelector(".like-icon").className = "far fa-heart like-icon";
+  } else {
+    likes[postId]++;
+    likeBtn.classList.add("liked");
+    likeBtn.querySelector(".like-icon").className = "fas fa-heart like-icon";
+  }
+  
+  likeCount.innerText = likes[postId];
+  localStorage.setItem("likes", JSON.stringify(likes));
+  
+  // Update recent posts likes
+  updateRecentPostStats();
 }
 
-
-function registerView(id){
-
-let views = JSON.parse(localStorage.getItem("views")||"{}")
-
-views[id]=(views[id]||0)+1
-
-localStorage.setItem("views",JSON.stringify(views))
-
-let el=document.getElementById("views-"+id)
-
-if(el) el.innerText=views[id]
-
+// Add comment
+function addComment(postId) {
+  let input = document.getElementById("comment-input-" + postId);
+  let text = input.value.trim();
+  
+  if (!text) {
+    alert("Please write a comment before posting.");
+    return;
+  }
+  
+  if (!comments[postId]) comments[postId] = [];
+  
+  // Add comment with timestamp
+  comments[postId].push({
+    text: text,
+    author: "Guest",
+    timestamp: new Date().toLocaleString()
+  });
+  
+  localStorage.setItem("comments", JSON.stringify(comments));
+  
+  // Clear input
+  input.value = "";
+  
+  // Refresh comments display
+  renderComments(postId);
+  updateCommentCount(postId);
+  updateRecentPostStats();
 }
 
-
-
-
-function renderComments(){
-
-let comments=JSON.parse(localStorage.getItem("comments")||"{}")
-
-for(let id in comments){
-
-let container=document.getElementById("comments-"+id)
-
-if(!container)continue
-
-container.innerHTML=""
-
-comments[id].forEach(c=>{
-
-let div=document.createElement("div")
-
-div.className="comment"
-
-div.innerText=c
-
-container.appendChild(div)
-
-})
-
+// Render comments for a post
+function renderComments(postId) {
+  let container = document.getElementById("comments-" + postId);
+  if (!container) return;
+  
+  container.innerHTML = "";
+  
+  if (comments[postId] && comments[postId].length > 0) {
+    comments[postId].forEach((comment, index) => {
+      let commentDiv = document.createElement("div");
+      commentDiv.className = "comment-item";
+      
+      let initial = comment.author ? comment.author.charAt(0).toUpperCase() : "G";
+      
+      commentDiv.innerHTML = `
+        <div class="comment-author">
+          <div class="comment-avatar">${initial}</div>
+          <span>${comment.author || "Guest"}</span>
+        </div>
+        <div class="comment-text">${comment.text}</div>
+        <div class="comment-meta">
+          <i class="far fa-clock"></i> ${comment.timestamp || "Just now"}
+        </div>
+      `;
+      
+      container.appendChild(commentDiv);
+    });
+  } else {
+    container.innerHTML = '<p style="color:#999; text-align:center; padding:20px;">No comments yet. Be the first to comment!</p>';
+  }
 }
 
+// Update comment count
+function updateCommentCount(postId) {
+  let countEl = document.getElementById("comments-count-" + postId);
+  if (countEl) {
+    let count = comments[postId] ? comments[postId].length : 0;
+    countEl.innerText = `(${count})`;
+  }
 }
 
-window.onload=function(){
-
-renderComments()
-
-let likes=JSON.parse(localStorage.getItem("likes")||"{}")
-
-for(let id in likes){
-
-let el=document.getElementById("likes-"+id)
-
-if(el)el.innerText=likes[id]
-
+// Update recent posts stats
+function updateRecentPostStats() {
+  // Update likes on recent posts
+  for (let postId in likes) {
+    let recentLikeEl = document.getElementById("recent-likes-" + postId);
+    if (recentLikeEl) recentLikeEl.innerText = likes[postId];
+  }
+  
+  // Update comments on recent posts
+  for (let postId in comments) {
+    let recentCommentEl = document.getElementById("recent-comments-" + postId);
+    if (recentCommentEl) recentCommentEl.innerText = comments[postId].length;
+  }
 }
 
-let views = JSON.parse(localStorage.getItem("views")||"{}")
-
-for(let id in views){
-
-let el=document.getElementById("views-"+id)
-
-if(el) el.innerText=views[id]
-
-}
-
-}
-
+// Initialize page
+window.onload = function() {
+  let postId = "{{ page.id }}";
+  
+  // Register view
+  registerView(postId);
+  
+  // Load likes
+  if (likes[postId]) {
+    let likeCount = document.getElementById("likes-" + postId);
+    let likeBtn = document.getElementById("like-btn-" + postId);
+    
+    if (likeCount) likeCount.innerText = likes[postId];
+    
+    // Check if user liked this post (you might want to store this in session)
+    // For now, we'll just show the count without marking as liked
+  }
+  
+  // Load comments
+  renderComments(postId);
+  updateCommentCount(postId);
+  
+  // Load recent posts stats
+  updateRecentPostStats();
+  
+  // Set up Enter key for comment input
+  let commentInput = document.getElementById("comment-input-" + postId);
+  if (commentInput) {
+    commentInput.addEventListener("keypress", function(e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        addComment(postId);
+      }
+    });
+  }
+};
 </script>
 
 </body>
-
 </html>
-
