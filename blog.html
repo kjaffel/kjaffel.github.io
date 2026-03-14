@@ -1,15 +1,17 @@
 ---
 ---
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{{ page.title }} - Khawla Jaffel Blog</title>
+<title>{{ page.title }} - Khawla Jaffel</title>
 <link href="https://fonts.googleapis.com/css2?family=Spinnaker&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/main.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 <style>
+/* Same styles as previous - keeping them compact for brevity */
 body{
   font-family:'Spinnaker',sans-serif;
   background:#fffaf5;
@@ -21,202 +23,273 @@ h1, h2, h3, h4{
   color:#8B4513;
 }
 
-/* Blog Post Styles */
-.blog-post-section {
-  padding: 2rem 0;
-  min-height: 80vh;
+.blog-section{
+  padding:3rem 0;
+  min-height:80vh;
 }
 
-.blog-post-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 20px;
+.blog-container{
+  max-width:800px;
+  margin:0 auto;
+  padding:0 20px;
+}
+
+.blog-header{
+  text-align:center;
+  margin-bottom:3rem;
+}
+
+.blog-header h2{
+  font-size:2.5rem;
+}
+
+/* Blog Post Card - Like Social Media Feed */
+.blog-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  transition: 0.3s;
+  margin-bottom: 2rem;
+  border: 1px solid #eae1d9;
+}
+
+.blog-card:hover {
+  box-shadow: 0 5px 20px rgba(139, 69, 19, 0.1);
 }
 
 .post-header {
-  margin-bottom: 2rem;
+  padding: 1.5rem 1.5rem 0.5rem 1.5rem;
 }
 
-.post-meta-top {
+.post-meta {
   display: flex;
   align-items: center;
-  gap: 10px;
-  color: #A0522D;
-  font-size: 0.95rem;
-  margin-bottom: 1rem;
+  gap: 12px;
+  margin-bottom: 0.5rem;
 }
 
-.author-avatar-small {
-  width: 30px;
-  height: 30px;
+.author-avatar {
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   object-fit: cover;
+  border: 2px solid #FF8C00;
 }
 
-.post-title {
-  font-size: 2.5rem;
-  margin: 0.5rem 0 1rem 0;
-  line-height: 1.2;
+.author-info {
+  flex: 1;
+}
+
+.author-name {
+  font-weight: bold;
+  color: #8B4513;
+  font-size: 1.1rem;
+  display: block;
 }
 
 .post-date {
+  color: #A0522D;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.post-date i {
+  font-size: 0.8rem;
+}
+
+.post-title {
+  font-size: 1.8rem;
+  margin: 0.5rem 0 1rem 0;
   color: #8B4513;
+  line-height: 1.3;
+}
+
+.post-title a {
+  color: #8B4513;
+  text-decoration: none;
+}
+
+.post-title a:hover {
+  color: #FF8C00;
+}
+
+.post-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  margin: 0.5rem 0;
+}
+
+.post-content-preview {
+  padding: 0 1.5rem;
+  color: #444;
   font-size: 1rem;
+  line-height: 1.6;
+}
+
+.post-content-preview p {
   margin-bottom: 1rem;
 }
 
-.post-featured-image {
-  width: 100%;
-  max-height: 500px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin: 1.5rem 0;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+.read-more-link {
+  color: #FF8C00;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 0.5rem;
 }
 
-.post-content {
-  font-size: 1.1rem;
-  margin: 2rem 0;
+.read-more-link:hover {
+  text-decoration: underline;
 }
 
-.post-content p {
-  margin-bottom: 1.5rem;
-}
-
-/* Engagement Bar */
 .engagement-bar {
   display: flex;
   align-items: center;
-  gap: 20px;
-  padding: 15px 0;
-  border-top: 1px solid #e0d6cc;
-  border-bottom: 1px solid #e0d6cc;
-  margin: 2rem 0;
+  gap: 25px;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #eae1d9;
+  border-bottom: 1px solid #eae1d9;
+  margin: 1rem 1.5rem;
   flex-wrap: wrap;
 }
 
 .engagement-item {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
   color: #666;
+  font-size: 0.95rem;
 }
 
-.views-count, .likes-count {
+.engagement-item i {
+  font-size: 1.1rem;
+  color: #A0522D;
+}
+
+.views-count, .likes-count, .comments-count {
   font-weight: bold;
   color: #8B4513;
+  margin-right: 4px;
 }
 
-.like-button {
+.like-btn {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 1.2rem;
-  color: #A0522D;
-  transition: transform 0.2s;
   display: flex;
   align-items: center;
-  gap: 5px;
-}
-
-.like-button:hover {
-  transform: scale(1.1);
-}
-
-.like-button.liked .like-icon {
-  color: #ff4444;
-}
-
-.share-buttons {
-  display: flex;
-  gap: 15px;
-  margin-left: auto;
-}
-
-.share-button {
-  color: #A0522D;
-  font-size: 1.2rem;
-  transition: color 0.2s;
-}
-
-.share-button:hover {
-  color: #8B4513;
-}
-
-/* Comments Section */
-.comments-section {
-  margin: 3rem 0;
-}
-
-.comments-section h3 {
-  margin-bottom: 1.5rem;
-  font-size: 1.5rem;
-}
-
-.comment-form {
-  margin-bottom: 2rem;
-}
-
-.comment-input-wrapper {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 0.5rem;
-}
-
-.comment-input {
-  flex: 1;
-  padding: 12px;
-  border: 2px solid #e0d6cc;
-  border-radius: 8px;
-  font-family: inherit;
-  font-size: 1rem;
-}
-
-.comment-input:focus {
-  outline: none;
-  border-color: #8B4513;
-}
-
-.comment-submit {
-  padding: 12px 24px;
-  background: #8B4513;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
+  gap: 8px;
+  color: #666;
+  font-size: 0.95rem;
+  padding: 5px 10px;
+  border-radius: 20px;
   transition: background 0.2s;
 }
 
-.comment-submit:hover {
-  background: #A0522D;
+.like-btn:hover {
+  background: #fff0e6;
+}
+
+.like-btn.liked {
+  color: #ff4444;
+}
+
+.like-btn.liked i {
+  color: #ff4444;
+}
+
+.share-container {
+  position: relative;
+  margin-left: auto;
+}
+
+.share-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #666;
+  font-size: 0.95rem;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.share-btn:hover {
+  background: #fff0e6;
+}
+
+.share-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+  padding: 10px;
+  display: none;
+  z-index: 100;
+  min-width: 200px;
+  margin-top: 5px;
+}
+
+.share-dropdown.show {
+  display: block;
+}
+
+.share-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.share-option:hover {
+  background: #fff0e6;
+}
+
+.share-option i {
+  width: 20px;
+  font-size: 1.1rem;
+}
+
+.comments-section {
+  padding: 0 1.5rem 1.5rem 1.5rem;
 }
 
 .comments-list {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+  padding-right: 10px;
 }
 
 .comment-item {
   background: #f9f5f0;
-  padding: 15px;
+  padding: 12px;
   border-radius: 8px;
-  border-left: 4px solid #FF8C00;
+  margin-bottom: 10px;
 }
 
-.comment-author {
+.comment-header {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 8px;
-  color: #8B4513;
-  font-weight: bold;
+  margin-bottom: 5px;
 }
 
 .comment-avatar {
-  width: 25px;
-  height: 25px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background: #8B4513;
   color: white;
@@ -227,109 +300,165 @@ h1, h2, h3, h4{
   font-weight: bold;
 }
 
+.comment-author {
+  font-weight: bold;
+  color: #8B4513;
+  font-size: 0.9rem;
+}
+
 .comment-text {
   color: #333;
-  margin-left: 35px;
+  margin-left: 34px;
+  font-size: 0.95rem;
 }
 
-.comment-meta {
-  margin-left: 35px;
-  font-size: 0.8rem;
+.comment-time {
+  margin-left: 34px;
+  font-size: 0.7rem;
   color: #A0522D;
-  margin-top: 5px;
+  margin-top: 3px;
 }
 
-/* Recent Posts Sidebar */
-.recent-posts-sidebar {
-  background: #f9f5f0;
-  padding: 2rem;
-  border-radius: 8px;
-  margin-top: 3rem;
-}
-
-.recent-posts-sidebar h4 {
-  margin-bottom: 1.5rem;
-  font-size: 1.3rem;
-}
-
-.recent-posts-list {
+.comment-form {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
+  gap: 10px;
+  margin-top: 1rem;
 }
 
-.recent-post-item {
-  display: flex;
-  gap: 15px;
-  align-items: center;
+.comment-input {
+  flex: 1;
   padding: 10px;
+  border: 2px solid #eae1d9;
+  border-radius: 20px;
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.comment-input:focus {
+  outline: none;
+  border-color: #FF8C00;
+}
+
+.comment-submit {
+  background: #8B4513;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 0 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.comment-submit:hover {
+  background: #A0522D;
+}
+
+.recent-posts-section {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: #f9f5f0;
+  border-radius: 12px;
+}
+
+.recent-posts-section h3 {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.recent-posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.recent-card {
   background: white;
-  border-radius: 6px;
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
   transition: transform 0.2s;
+  border: 1px solid #eae1d9;
 }
 
-.recent-post-item:hover {
-  transform: translateX(5px);
+.recent-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(139, 69, 19, 0.1);
 }
 
-.recent-post-image {
-  width: 60px;
-  height: 60px;
-  border-radius: 6px;
+.recent-image {
+  width: 100%;
+  height: 150px;
   object-fit: cover;
 }
 
-.recent-post-info {
-  flex: 1;
+.recent-content {
+  padding: 1rem;
 }
 
-.recent-post-title {
+.recent-title {
   font-weight: bold;
-  color: #333;
-  text-decoration: none;
-  font-size: 0.95rem;
-}
-
-.recent-post-title:hover {
   color: #8B4513;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
 }
 
-.recent-post-stats {
+.recent-meta {
   display: flex;
-  gap: 10px;
+  gap: 15px;
   font-size: 0.8rem;
   color: #A0522D;
-  margin-top: 5px;
 }
 
-/* Update notice */
-.update-notice {
-  background: #f0e7de;
-  padding: 10px 15px;
-  border-radius: 6px;
+.recent-meta i {
+  margin-right: 3px;
+}
+
+.see-all {
+  display: block;
+  text-align: center;
+  margin-top: 2rem;
   color: #8B4513;
-  font-size: 0.95rem;
-  margin-bottom: 1.5rem;
-  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.1rem;
 }
 
-/* Responsive */
+.see-all:hover {
+  color: #FF8C00;
+}
+
 @media (max-width: 768px) {
   .post-title {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
   
   .engagement-bar {
-    flex-direction: column;
-    align-items: flex-start;
+    gap: 15px;
   }
   
-  .share-buttons {
+  .share-container {
     margin-left: 0;
+    width: 100%;
+    margin-top: 10px;
   }
   
-  .comment-input-wrapper {
+  .share-dropdown {
+    left: 0;
+    right: auto;
+  }
+  
+  .comment-form {
     flex-direction: column;
+  }
+  
+  .comment-submit {
+    padding: 10px;
+  }
+  
+  .recent-posts-grid {
+    grid-template-columns: 1fr;
   }
 }
 </style>
@@ -356,126 +485,146 @@ h1, h2, h3, h4{
     </nav>
   </div>
 
-  <!-- Main Content -->
+  <!-- Main Blog Section -->
   <section class="wrapper style1">
-    <div class="blog-post-section">
-      <div class="blog-post-container">
+    <div class="blog-section">
+      <div class="blog-container">
         
-        <!-- Post Header -->
-        <div class="post-header">
-          <div class="post-meta-top">
-            <img src="/images/avatar.png" class="author-avatar-small" alt="Khawla Jaffel">
-            <span>Khawla Jaffel</span>
-            <span>•</span>
-            <span>{{ page.date | date: "%b %d, %Y" }}</span>
-            <span>•</span>
-            <span>{{ content | number_of_words | divided_by: 200 }} min read</span>
-          </div>
+        <div class="blog-header">
+          <h2>Blog</h2>
+          <p>Thoughts, experiences, and updates from my journey in particle physics</p>
+        </div>
+
+        <!-- Blog Posts Loop from _posts -->
+        {% assign posts = site.posts | sort: 'date' | reverse %}
+        {% for post in posts %}
+        <article class="blog-card" data-post-id="{{ post.id | slugify }}">
           
-          <h1 class="post-title">{{ page.title }}</h1>
-          
-          {% if page.updated %}
-          <div class="update-notice">
-            Updated: {{ page.updated | date: "%b %d, %Y" }}
+          <!-- Post Header -->
+          <div class="post-header">
+            <div class="post-meta">
+              <img src="/images/avatar.png" alt="Khawla Jaffel" class="author-avatar">
+              <div class="author-info">
+                <span class="author-name">Khawla Jaffel</span>
+                <span class="post-date">
+                  <i class="far fa-calendar-alt"></i> {{ post.date | date: "%b %d, %Y" }}
+                  <i class="far fa-clock"></i> 
+                  {% assign words = post.content | number_of_words %}
+                  {% if words < 360 %}
+                    1 min read
+                  {% else %}
+                    {{ words | divided_by:180 }} min read
+                  {% endif %}
+                </span>
+              </div>
+            </div>
+            
+            <h2 class="post-title">
+              <a href="{{ post.url }}">{{ post.title }}</a>
+            </h2>
           </div>
+
+          <!-- Featured Image -->
+          {% if post.image %}
+          <img src="{{ post.image }}" alt="{{ post.title }}" class="post-image">
           {% endif %}
-          
-          <div class="post-date">
-            <i class="far fa-calendar-alt"></i> {{ page.date | date: "%B %d, %Y" }}
+
+          <!-- Post Content Preview -->
+          <div class="post-content-preview">
+            {% if post.excerpt %}
+              {{ post.excerpt | strip_html | truncate: 300 }}
+            {% else %}
+              {{ post.content | strip_html | truncate: 300 }}
+            {% endif %}
+            <a href="{{ post.url }}" class="read-more-link">Continue reading →</a>
           </div>
-        </div>
 
-        <!-- Featured Image -->
-        {% if page.image %}
-        <img class="post-featured-image" src="{{ page.image }}" alt="{{ page.title }}">
-        {% endif %}
-
-        <!-- Post Content -->
-        <div class="post-content">
-          {{ content }}
-        </div>
-
-        <!-- Engagement Bar (Views, Likes, Shares) -->
-        <div class="engagement-bar">
-          <div class="engagement-item">
-            <i class="far fa-eye"></i>
-            <span class="views-count" id="views-{{ page.id }}">0</span>
-            <span>views</span>
-          </div>
-          
-          <div class="engagement-item">
-            <button onclick="toggleLike('{{ page.id }}')" class="like-button" id="like-btn-{{ page.id }}">
-              <i class="far fa-heart like-icon"></i>
-              <span class="likes-count" id="likes-{{ page.id }}">0</span>
+          <!-- Engagement Bar -->
+          <div class="engagement-bar">
+            <div class="engagement-item">
+              <i class="far fa-eye"></i>
+              <span class="views-count" id="views-{{ post.id | slugify }}">0</span>
+              <span>views</span>
+            </div>
+            
+            <button class="like-btn" onclick="toggleLike('{{ post.id | slugify }}')" id="like-btn-{{ post.id | slugify }}">
+              <i class="far fa-heart"></i>
+              <span class="likes-count" id="likes-{{ post.id | slugify }}">0</span>
             </button>
-          </div>
 
-          <div class="share-buttons">
-            <a href="https://twitter.com/intent/tweet?url={{ site.url }}{{ page.url }}&text={{ page.title }}" 
-               target="_blank" class="share-button" title="Share on Twitter">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}" 
-               target="_blank" class="share-button" title="Share on Facebook">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.url }}{{ page.url }}" 
-               target="_blank" class="share-button" title="Share on LinkedIn">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a href="https://www.instagram.com/?url={{ site.url }}{{ page.url }}" 
-               target="_blank" class="share-button" title="Share on Instagram">
-              <i class="fab fa-instagram"></i>
-            </a>
-          </div>
-        </div>
+            <div class="engagement-item">
+              <i class="far fa-comment"></i>
+              <span class="comments-count" id="comments-count-{{ post.id | slugify }}">0</span>
+              <span>comments</span>
+            </div>
 
-        <!-- Comments Section -->
-        <div class="comments-section">
-          <h3>Comments <span id="comments-count-{{ page.id }}">(0)</span></h3>
-          
-          <div class="comment-form">
-            <div class="comment-input-wrapper">
-              <input type="text" 
-                     id="comment-input-{{ page.id }}" 
-                     class="comment-input" 
-                     placeholder="Write a comment..." 
-                     maxlength="500">
-              <button onclick="addComment('{{ page.id }}')" class="comment-submit">
-                <i class="far fa-paper-plane"></i> Post
+            <!-- Share Dropdown -->
+            <div class="share-container">
+              <button class="share-btn" onclick="toggleShare(this)">
+                <i class="far fa-share-square"></i> Share
               </button>
+              <div class="share-dropdown">
+                <a href="https://twitter.com/intent/tweet?url={{ site.url }}{{ post.url }}&text={{ post.title }}" 
+                   target="_blank" class="share-option">
+                  <i class="fab fa-twitter" style="color:#1DA1F2;"></i> Twitter
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ post.url }}" 
+                   target="_blank" class="share-option">
+                  <i class="fab fa-facebook-f" style="color:#4267B2;"></i> Facebook
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.url }}{{ post.url }}" 
+                   target="_blank" class="share-option">
+                  <i class="fab fa-linkedin-in" style="color:#0077B5;"></i> LinkedIn
+                </a>
+                <a href="https://www.instagram.com/?url={{ site.url }}{{ post.url }}" 
+                   target="_blank" class="share-option">
+                  <i class="fab fa-instagram" style="color:#E4405F;"></i> Instagram
+                </a>
+              </div>
             </div>
           </div>
 
-          <div class="comments-list" id="comments-{{ page.id }}">
-            <!-- Comments will be loaded here dynamically -->
-          </div>
-        </div>
+          <!-- Comments Section -->
+          <div class="comments-section">
+            <div class="comments-list" id="comments-{{ post.id | slugify }}">
+              <!-- Comments will be loaded here -->
+            </div>
 
-        <!-- Recent Posts -->
-        <div class="recent-posts-sidebar">
-          <h4>Recent Posts</h4>
-          <div class="recent-posts-list">
-            {% for post in site.posts limit:3 %}
-              {% if post.id != page.id %}
-              <div class="recent-post-item">
-                {% if post.image %}
-                <img src="{{ post.image }}" class="recent-post-image" alt="{{ post.title }}">
-                {% endif %}
-                <div class="recent-post-info">
-                  <a href="{{ post.url }}" class="recent-post-title">{{ post.title }}</a>
-                  <div class="recent-post-stats">
-                    <span><i class="far fa-heart"></i> <span id="recent-likes-{{ post.id }}">0</span></span>
-                    <span><i class="far fa-comment"></i> <span id="recent-comments-{{ post.id }}">0</span></span>
-                  </div>
+            <div class="comment-form">
+              <input type="text" 
+                     id="comment-input-{{ post.id | slugify }}" 
+                     class="comment-input" 
+                     placeholder="Write a comment..." 
+                     maxlength="500">
+              <button class="comment-submit" onclick="addComment('{{ post.id | slugify }}')">
+                <i class="far fa-paper-plane"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+        {% endfor %}
+
+        <!-- Recent Posts Section -->
+        <div class="recent-posts-section">
+          <h3>Recent Posts</h3>
+          <div class="recent-posts-grid">
+            {% for post in posts limit:4 %}
+            <a href="{{ post.url }}" class="recent-card">
+              {% if post.image %}
+              <img src="{{ post.image }}" alt="{{ post.title }}" class="recent-image">
+              {% endif %}
+              <div class="recent-content">
+                <div class="recent-title">{{ post.title }}</div>
+                <div class="recent-meta">
+                  <span><i class="far fa-calendar"></i> {{ post.date | date: "%b %d" }}</span>
+                  <span><i class="far fa-heart"></i> <span id="recent-likes-{{ post.id | slugify }}">0</span></span>
+                  <span><i class="far fa-comment"></i> <span id="recent-comments-{{ post.id | slugify }}">0</span></span>
                 </div>
               </div>
-              {% endif %}
+            </a>
             {% endfor %}
           </div>
-          <a href="/blog.html" style="display:block; text-align:center; margin-top:1.5rem; color:#8B4513; font-weight:bold;">
-            See All Posts →
-          </a>
+          <a href="/blog.html" class="see-all">See All Posts →</a>
         </div>
 
       </div>
@@ -499,20 +648,24 @@ h1, h2, h3, h4{
 
 </div>
 
-<!-- JavaScript for interactions -->
 <script>
 // Initialize storage
 let likes = JSON.parse(localStorage.getItem("likes") || "{}");
 let views = JSON.parse(localStorage.getItem("views") || "{}");
 let comments = JSON.parse(localStorage.getItem("comments") || "{}");
 
-// Register view on page load
-function registerView(postId) {
-  views[postId] = (views[postId] || 0) + 1;
-  localStorage.setItem("views", JSON.stringify(views));
+// Toggle share dropdown
+function toggleShare(button) {
+  const dropdown = button.nextElementSibling;
+  dropdown.classList.toggle('show');
   
-  let viewEl = document.getElementById("views-" + postId);
-  if (viewEl) viewEl.innerText = views[postId];
+  // Close when clicking outside
+  document.addEventListener('click', function closeDropdown(e) {
+    if (!button.contains(e.target) && !dropdown.contains(e.target)) {
+      dropdown.classList.remove('show');
+      document.removeEventListener('click', closeDropdown);
+    }
+  });
 }
 
 // Toggle like
@@ -525,11 +678,11 @@ function toggleLike(postId) {
   if (likeBtn.classList.contains("liked")) {
     likes[postId]--;
     likeBtn.classList.remove("liked");
-    likeBtn.querySelector(".like-icon").className = "far fa-heart like-icon";
+    likeBtn.querySelector("i").className = "far fa-heart";
   } else {
     likes[postId]++;
     likeBtn.classList.add("liked");
-    likeBtn.querySelector(".like-icon").className = "fas fa-heart like-icon";
+    likeBtn.querySelector("i").className = "fas fa-heart";
   }
   
   likeCount.innerText = likes[postId];
@@ -544,14 +697,10 @@ function addComment(postId) {
   let input = document.getElementById("comment-input-" + postId);
   let text = input.value.trim();
   
-  if (!text) {
-    alert("Please write a comment before posting.");
-    return;
-  }
+  if (!text) return;
   
   if (!comments[postId]) comments[postId] = [];
   
-  // Add comment with timestamp
   comments[postId].push({
     text: text,
     author: "Guest",
@@ -577,27 +726,35 @@ function renderComments(postId) {
   container.innerHTML = "";
   
   if (comments[postId] && comments[postId].length > 0) {
-    comments[postId].forEach((comment, index) => {
+    // Show only last 3 comments
+    const recentComments = comments[postId].slice(-3);
+    
+    recentComments.forEach(comment => {
       let commentDiv = document.createElement("div");
       commentDiv.className = "comment-item";
       
       let initial = comment.author ? comment.author.charAt(0).toUpperCase() : "G";
       
       commentDiv.innerHTML = `
-        <div class="comment-author">
+        <div class="comment-header">
           <div class="comment-avatar">${initial}</div>
-          <span>${comment.author || "Guest"}</span>
+          <span class="comment-author">${comment.author || "Guest"}</span>
         </div>
         <div class="comment-text">${comment.text}</div>
-        <div class="comment-meta">
-          <i class="far fa-clock"></i> ${comment.timestamp || "Just now"}
-        </div>
+        <div class="comment-time">${comment.timestamp || "Just now"}</div>
       `;
       
       container.appendChild(commentDiv);
     });
-  } else {
-    container.innerHTML = '<p style="color:#999; text-align:center; padding:20px;">No comments yet. Be the first to comment!</p>';
+    
+    if (comments[postId].length > 3) {
+      let moreDiv = document.createElement("div");
+      moreDiv.style.textAlign = "center";
+      moreDiv.style.padding = "10px";
+      moreDiv.style.color = "#8B4513";
+      moreDiv.innerHTML = `<i class="far fa-comments"></i> View all ${comments[postId].length} comments`;
+      container.appendChild(moreDiv);
+    }
   }
 }
 
@@ -606,61 +763,67 @@ function updateCommentCount(postId) {
   let countEl = document.getElementById("comments-count-" + postId);
   if (countEl) {
     let count = comments[postId] ? comments[postId].length : 0;
-    countEl.innerText = `(${count})`;
+    countEl.innerText = count;
   }
 }
 
 // Update recent posts stats
 function updateRecentPostStats() {
-  // Update likes on recent posts
   for (let postId in likes) {
     let recentLikeEl = document.getElementById("recent-likes-" + postId);
     if (recentLikeEl) recentLikeEl.innerText = likes[postId];
   }
   
-  // Update comments on recent posts
   for (let postId in comments) {
     let recentCommentEl = document.getElementById("recent-comments-" + postId);
     if (recentCommentEl) recentCommentEl.innerText = comments[postId].length;
   }
 }
 
+// Register view
+function registerView(postId) {
+  if (!views[postId]) views[postId] = 0;
+  views[postId]++;
+  localStorage.setItem("views", JSON.stringify(views));
+  
+  let viewEl = document.getElementById("views-" + postId);
+  if (viewEl) viewEl.innerText = views[postId];
+}
+
 // Initialize page
-window.onload = function() {
-  let postId = "{{ page.id }}";
+document.addEventListener('DOMContentLoaded', function() {
+  // Get all post IDs from the page
+  const posts = document.querySelectorAll('.blog-card');
   
-  // Register view
-  registerView(postId);
-  
-  // Load likes
-  if (likes[postId]) {
-    let likeCount = document.getElementById("likes-" + postId);
-    let likeBtn = document.getElementById("like-btn-" + postId);
+  posts.forEach(post => {
+    const postId = post.dataset.postId;
     
-    if (likeCount) likeCount.innerText = likes[postId];
+    // Register view for this post
+    registerView(postId);
     
-    // Check if user liked this post (you might want to store this in session)
-    // For now, we'll just show the count without marking as liked
-  }
-  
-  // Load comments
-  renderComments(postId);
-  updateCommentCount(postId);
+    // Load likes
+    if (likes[postId]) {
+      let likeCount = document.getElementById("likes-" + postId);
+      if (likeCount) likeCount.innerText = likes[postId];
+    }
+    
+    // Load comments
+    renderComments(postId);
+    updateCommentCount(postId);
+  });
   
   // Load recent posts stats
   updateRecentPostStats();
   
-  // Set up Enter key for comment input
-  let commentInput = document.getElementById("comment-input-" + postId);
-  if (commentInput) {
-    commentInput.addEventListener("keypress", function(e) {
-      if (e.key === "Enter") {
-        e.preventDefault();
-        addComment(postId);
-      }
-    });
-  }
-};
+  // Close share dropdowns when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.share-container')) {
+      document.querySelectorAll('.share-dropdown').forEach(dropdown => {
+        dropdown.classList.remove('show');
+      });
+    }
+  });
+});
 </script>
 
 </body>
