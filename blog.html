@@ -150,7 +150,7 @@ Member of CMS Experiment at CERN.
         <img class="blog-image" src="{{ post.image }}">
         <div class="blog-content">
          <div class="blog-author">
-              <img src="/images/khawla.jpg" class="author-avatar">
+              <img src="images/avatar.png" class="author-avatar">
               <span class="author-name">Khawla Jaffel</span>
               • {{ post.date | date: "%b %d, %Y" }}
               • {{ post.content | number_of_words | divided_by:200 }} min read
@@ -158,7 +158,7 @@ Member of CMS Experiment at CERN.
           <h2 class="blog-title">{{ post.title }}</h2>
           <p class="blog-excerpt">{{ post.excerpt | strip_html | truncate:160 }}</p>
          <div class="blog-footer">
-            <span class="views">👁 <span id="views-{{ post.id }}">0</span></span>
+            <span class="views">views<span id="views-{{ post.id }}">0</span></span>
             <button onclick="likePost('{{post.id}}')" class="like-btn">
             ❤️ <span id="likes-{{post.id}}">0</span>
             </button>
@@ -170,6 +170,61 @@ Member of CMS Experiment at CERN.
 
     </div>
   </div>
+<ul class="icons share-icons">
+  <li>
+    <a target="_blank"
+       href="https://twitter.com/intent/tweet?url={{ site.url }}{{ post.url }}"
+       class="icon brands fa-twitter">
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+  <li>
+    <a target="_blank"
+       href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ post.url }}"
+       class="icon brands fa-facebook-f">
+      <span class="label">Facebook</span>
+    </a>
+  </li>
+  <li>
+    <a target="_blank"
+       href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.url }}{{ post.url }}"
+       class="icon brands fa-linkedin-in">
+      <span class="label">LinkedIn</span>
+    </a>
+  </li>
+  <li>
+    <a target="_blank"
+       href="https://www.instagram.com/?url={{ site.url }}{{ post.url }}"
+       class="icon brands fa-instagram">
+      <span class="label">Instagram</span>
+    </a>
+  </li>
+</ul>
+
+
+<div class="comments">
+<div id="comments-{{post.id}}"></div>
+<input
+id="input-{{post.id}}"
+placeholder="Write a comment..."
+style="width:100%;padding:6px;margin-top:5px">
+<button onclick="addComment('{{post.id}}')">
+Post
+</button>
+</div>
+
+
+<h2 style="margin-bottom:20px">Recent Posts</h2>
+<div class="recent-posts">
+{% for post in site.posts limit:3 %}
+<a href="{{post.url}}" class="recent-link">
+{{post.title}}
+</a>
+{% endfor %}
+</div>
+
+
+
 </section>
 
 </div>
@@ -177,67 +232,9 @@ Member of CMS Experiment at CERN.
 </section>
 
 <div id="footer">
-<div class="share">
-
-<a target="_blank"
-href="https://twitter.com/intent/tweet?url={{ site.url }}{{ post.url }}">
-Twitter
-</a>
-
-<a target="_blank"
-href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ post.url }}">
-Facebook
-</a>
-
-<a target="_blank"
-href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.url }}{{ post.url }}">
-LinkedIn
-</a>
-
-</div>
-
-<div class="comments">
-
-<div id="comments-{{post.id}}"></div>
-
-<input
-id="input-{{post.id}}"
-placeholder="Write a comment..."
-style="width:100%;padding:6px;margin-top:5px">
-
-<button onclick="addComment('{{post.id}}')">
-Post
-</button>
-
-</div>
-
-
-<h2 style="margin-bottom:20px">Recent Posts</h2>
-
-<div class="recent-posts">
-
-{% for post in site.posts limit:3 %}
-
-<a href="{{post.url}}" class="recent-link">
-{{post.title}}
-</a>
-
-{% endfor %}
-
-</div>
-
-
-
 <div class="container">
 
 <ul class="icons">
-
-<li><a href="https://twitter.com/khawlajaffel" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-<li><a href="https://web.facebook.com/profile.php?id=100074540816904&_rdc=1&_rdr" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-<li><a href="https://github.com/kjaffel" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-<li><a href="https://www.linkedin.com/in/khawla-jaffel-b726a414a/" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-<li><a href="https://www.instagram.com/__gamza____/" class="icon brands fa-instagram"><span class="label">instagram</span></a></li>
-
 </ul>
 
 <div class="copyright">
