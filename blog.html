@@ -1,3 +1,8 @@
+---
+layout: default
+title: Blog
+---
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -140,59 +145,32 @@ Member of CMS Experiment at CERN.
 
 </ul>
 </nav>
-
 </div>
 
 <section class="wrapper style1">
+  <div class="blog-section">
+    <div class="blog-container">
 
-<div class="blog-section">
+      {% for post in site.posts %}
+      <article class="blog-card">
+        <img class="blog-image" src="{{ post.image }}">
+        <div class="blog-content">
+          <div class="blog-author">
+            khawlajaffel • {{ post.date | date: "%b %d, %Y" }}
+          </div>
+          <h2 class="blog-title">{{ post.title }}</h2>
+          <p class="blog-excerpt">{{ post.excerpt | strip_html | truncate:160 }}</p>
+          <div class="blog-footer">
+            <a href="{{ post.url }}" class="read-more">Continue reading →</a>
+            <button class="like-btn">❤️</button>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
 
-<div class="blog-container">
-
-{% raw %}
-{% for post in site.posts %}
-
-<article class="blog-card">
-
-<img class="blog-image"
-src="{{ post.image }}">
-
-<div class="blog-content">
-
-<div class="blog-author">
-khawlajaffel • {{ post.date | date: "%b %d, %Y" }}
-</div>
-
-<h2 class="blog-title">
-{{ post.title }}
-</h2>
-
-<p class="blog-excerpt">
-{{ post.excerpt | strip_html | truncate:160 }}
-</p>
-
-<div class="blog-footer">
-
-<a href="{{ post.url }}" class="read-more">
-Continue reading →
-</a>
-
-<button class="like-btn">
-❤️
-</button>
-
-</div>
-
-</div>
-
-</article>
-
-{% endfor %}
-{% endraw %}
-
-</div>
-
-</div>
+    </div>
+  </div>
+</section>
 
 </div>
 
