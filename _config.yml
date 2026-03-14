@@ -1,11 +1,16 @@
 title: Khawla Jaffel
 description: Physics & Research Blog
-theme: Architect
+
+remote_theme: pages-themes/architect
+
+plugins:
+  - jekyll-remote-theme
+
 markdown: kramdown
 
 kramdown:
   math_engine: mathjax
 
-minima:
-  custom_css:
-    - assets/css/main.css
+#minima:
+#  custom_css:
+#    - assets/css/main.css
