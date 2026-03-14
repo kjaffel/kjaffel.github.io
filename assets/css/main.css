@@ -3397,12 +3397,6 @@ input, select, textarea {
   justify-content: center;
 }
 
-.blog-author {
-  font-size: 0.9rem;
-  color: #666;
-  margin-bottom: 0.5rem;
-}
-
 .blog-title {
   font-size: 2rem;
   margin: 0.5rem 0;
@@ -3443,4 +3437,39 @@ input, select, textarea {
   .blog-card {
     grid-template-columns: 1fr;
   }
+}
+.blog-author{
+display:flex;
+align-items:center;
+gap:8px;
+font-size:0.9rem;
+color:#A0522D;
+}
+
+.author-avatar{
+width:28px;
+height:28px;
+border-radius:50%;
+object-fit:cover;
+}
+.share a{
+margin-right:10px;
+font-size:0.85rem;
+color:#8B4513;
+}
+.recent-posts{
+margin-bottom:40px;
+}
+
+.recent-link{
+display:block;
+padding:8px 0;
+font-weight:bold;
+color:#8B4513;
+}
+.blog-footer{
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-top:10px;
 }

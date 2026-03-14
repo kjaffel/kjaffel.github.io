@@ -149,15 +149,21 @@ Member of CMS Experiment at CERN.
       <article class="blog-card">
         <img class="blog-image" src="{{ post.image }}">
         <div class="blog-content">
-          <div class="blog-author">
-            khawlajaffel • {{ post.date | date: "%b %d, %Y" }}
-          </div>
+         <div class="blog-author">
+              <img src="/images/khawla.jpg" class="author-avatar">
+              <span class="author-name">Khawla Jaffel</span>
+              • {{ post.date | date: "%b %d, %Y" }}
+              • {{ post.content | number_of_words | divided_by:200 }} min read
+         </div>
           <h2 class="blog-title">{{ post.title }}</h2>
           <p class="blog-excerpt">{{ post.excerpt | strip_html | truncate:160 }}</p>
-          <div class="blog-footer">
+         <div class="blog-footer">
+            <span class="views">👁 <span id="views-{{ post.id }}">0</span></span>
+            <button onclick="likePost('{{post.id}}')" class="like-btn">
+            ❤️ <span id="likes-{{post.id}}">0</span>
+            </button>
             <a href="{{ post.url }}" class="read-more">Continue reading →</a>
-            <button class="like-btn">❤️</button>
-          </div>
+         </div>
         </div>
       </article>
       {% endfor %}
@@ -171,6 +177,56 @@ Member of CMS Experiment at CERN.
 </section>
 
 <div id="footer">
+<div class="share">
+
+<a target="_blank"
+href="https://twitter.com/intent/tweet?url={{ site.url }}{{ post.url }}">
+Twitter
+</a>
+
+<a target="_blank"
+href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ post.url }}">
+Facebook
+</a>
+
+<a target="_blank"
+href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.url }}{{ post.url }}">
+LinkedIn
+</a>
+
+</div>
+
+<div class="comments">
+
+<div id="comments-{{post.id}}"></div>
+
+<input
+id="input-{{post.id}}"
+placeholder="Write a comment..."
+style="width:100%;padding:6px;margin-top:5px">
+
+<button onclick="addComment('{{post.id}}')">
+Post
+</button>
+
+</div>
+
+
+<h2 style="margin-bottom:20px">Recent Posts</h2>
+
+<div class="recent-posts">
+
+{% for post in site.posts limit:3 %}
+
+<a href="{{post.url}}" class="recent-link">
+{{post.title}}
+</a>
+
+{% endfor %}
+
+</div>
+
+
 
 <div class="container">
 
@@ -238,6 +294,24 @@ input.value=""
 
 }
 
+
+function registerView(id){
+
+let views = JSON.parse(localStorage.getItem("views")||"{}")
+
+views[id]=(views[id]||0)+1
+
+localStorage.setItem("views",JSON.stringify(views))
+
+let el=document.getElementById("views-"+id)
+
+if(el) el.innerText=views[id]
+
+}
+
+
+
+
 function renderComments(){
 
 let comments=JSON.parse(localStorage.getItem("comments")||"{}")
@@ -277,6 +351,16 @@ for(let id in likes){
 let el=document.getElementById("likes-"+id)
 
 if(el)el.innerText=likes[id]
+
+}
+
+let views = JSON.parse(localStorage.getItem("views")||"{}")
+
+for(let id in views){
+
+let el=document.getElementById("views-"+id)
+
+if(el) el.innerText=views[id]
 
 }
 
