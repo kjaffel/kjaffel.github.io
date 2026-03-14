@@ -1,0 +1,45 @@
+---
+title: Public Thesis defense - IRMP
+date: 2023-09-07
+image: /images/d4417d_ebb01fa663b5476abba0b1e99e25bf16~mv2.jpg
+---
+
+# Search for 2HDM neutral Higgs bosons through l+ l- bb finale state at CMS in run 2 LHC data by Khawla JAFFEL
+
+
+Pour l’obtention du grade académique de Doctorat en sciences
+
+IRMP – Soutenance publique de thèse – Mme Khawla JAFFEL                     
+
+**Date et lieu :**  Vendredi 08 septembre 2023 à 15h – Auditoire CYCL01 – Chemin du Cyclotron, 2 – 1348 Louvain-la-Neuve
+
+Soutenance publique de thèse également organisée en téléconférence et publiquement accessible via le lien
+
+Pour plus de détails, nous vous invitons à consulter la page « agenda » du Secteur des Sciences et Technologies
+
+
+![My image](./images/d4417d_ebb01fa663b5476abba0b1e99e25bf16~mv2.jpg)
+
+## Abstract:
+
+With the discovery of the Higgs boson, the Standard Model (SM) of particle physics can now be considered complete. Still, it is far from being able to answer all the questions that arise when looking at the world around us. To gain deeper insights into "nature\'s" behavior at high energies, numerous scenarios Beyond the Standard Model (BSM) have been proposed to extend or modify the SM in the pursuit of a more complete and unified theory of fundamental particles and forces.
+
+Since there is no requirement for the Higgs sector to be minimal, one of the remaining unanswered questions is whether the newly discovered Higgs boson is part of an extended scalar sector or not. The Two-Higgs-doublet models (2HDM) are considered to be among the simplest extensions of SM. The addition of the second Higgs doublet leads to a richer phenomenology as there are five physical scalar states predicted in this theory: two neutral scalars - h and H - a pseudo-scalar A, and a pair of charged Higgs bosons H±.
+
+To confirm or disprove this possibility, an investigation would involve precision measurements of the properties and couplings of the discovered Higgs boson, as well as searches for the other predicted Higgs bosons in the extended scalar sector.
+
+This thesis addresses the search for the new H and A bosons through H/A → Z A/H → l+l- bb signatures within the LHC using CMS full run 2 data. This search extends the reach of the 2HDM type-II scenario to intermediate and high tanβ values for two production mechanisms, gluon-gluon fusion and b-associated production. It also probes regions of the mass plane that have been overlooked before, such as the boosted regime, where the difference in mass between the heavy Higgs and the pseudo-scalar causes the production of the daughter particle to be produced with a large boost, resulting in close b jets often reconstructed as a single fat-jet.
+
+The reported analysis pushes the boundaries of conventional analysis methods employed in previous search strategies by using machine learning and other advanced techniques in the hope of finding hints of new physics beyond the standard model.
+
+
+
+## Jury members :
+
+- Prof. Christophe Delaere (UCLouvain), supervisor
+- Prof. Fabio Maltoni (UCLouvain), chairperson
+- Dr. Andrea Giammanco (UCLouvain), secretary
+- Prof. Barbara Clerbaux (ULB)
+- Dr. Jan Steggemann (EPFL and ETH Zurich)
+
+

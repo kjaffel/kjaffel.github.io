@@ -1,11 +1,10 @@
 ---
 title: Officially a Doctor! 🎓✨ Beyond Grateful for the Journey 💙
 date: 2023-09-13
-image: /assets/images/phd.jpg
+image: /images/d4417d_dbebc2a7e3ae48298da71c2e64a7d8ab~mv2.jpeg
 ---
 
-I've successfully completed my PhD you guy's  and am now officially a doctor in the field of science 🥳. This journey wouldn't have been possible without the incredible support from my supervisor, friends and family. I'm grateful having you all by my side. Thank you for being there with me on that special day, September 8th, and here are a few pictures for those who couldn't be there with us.💙
-
+I"\'"ve successfully completed my PhD you guy"\'"s  and am now officially a doctor in the field of science 🥳. This journey wouldn"\'"t have been possible without the incredible support from my supervisor, friends and family. I"\'"m grateful having you all by my side. Thank you for being there with me on that special day, September 8th, and here are a few pictures for those who couldn"\'"t be there with us.💙
 
 ![My image](./images/d4417d_dbebc2a7e3ae48298da71c2e64a7d8ab~mv2.jpeg)
 My supervisor (Christophe Delaere) and myself. 😊
