@@ -144,24 +144,24 @@ Member of CMS Experiment at CERN.
 <section class="wrapper style1">
   <div class="blog-section">
     <div class="blog-container">
-
-      {% for post in site.posts %}
-      <article class="blog-card">
-        <img class="blog-image" src="{{ post.image }}">
-        <div class="blog-content">
-          <div class="blog-author">
-            <img src="images/avatar.png" class="author-avatar">
-            <span class="author-name">Khawla Jaffel</span>
-            • {{ post.date | date: "%b %d, %Y" }}
-            • {{ post.content | number_of_words | divided_by:200 }} min read
+        {% for post in site.posts %}
+        <article class="blog-card">
+          <img class="blog-image" src="{{ post.image }}">
+          <div class="blog-content">
+            <div class="blog-author">
+              <span class="author-name">Khawla Jaffel</span>
+              • {{ post.date | date: "%b %d, %Y" }}
+              • {{ post.content | number_of_words | divided_by:200 }} min read
+            </div>
+        
+            <h2 class="blog-title">{{ post.title }}</h2>
+        
+            <p class="blog-excerpt">{{ post.excerpt | strip_html | truncate:160 }}</p>
+        
+            <a href="{{ post.url }}" class="read-more">Continue reading →</a>
           </div>
-
-          <h2 class="blog-title">{{ post.title }}</h2>
-
-          <!-- Avoid duplicating title in excerpt -->
-          <p class="blog-excerpt">
-            {{ post.excerpt | strip_html | truncate:160 }}
-          </p>
+        </article>
+        {% endfor %}
 
           <div class="blog-footer">
             <span class="views">views <span id="views-{{ post.id }}">0</span></span>
@@ -214,9 +214,6 @@ Member of CMS Experiment at CERN.
           </ul>
 
         </div>
-      </article>
-      {% endfor %}
-
     </div>
   </div>
 
