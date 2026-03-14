@@ -3445,7 +3445,7 @@ input, select, textarea {
   }
 }
 .post-content {
-    max-width: 800px;
+    max-width: 500px;
     margin: auto;
     line-height: 1.7;
     font-size: 18px;
