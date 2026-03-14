@@ -3444,4 +3444,14 @@ input, select, textarea {
     grid-template-columns: 1fr;
   }
 }
+.post-content {
+    max-width: 800px;
+    margin: auto;
+    line-height: 1.7;
+    font-size: 18px;
+}
 
+.post-content img {
+    border-radius: 8px;
+    margin: 20px 0;
+}
