@@ -149,66 +149,44 @@ Member of CMS Experiment at CERN.
 
 <div class="blog-container">
 
-<div class="blog-header">
-
-<h2>Physics & Research Blog</h2>
-
-<p>
-Insights, discoveries, and thoughts from my work in particle physics.
-</p>
-
-</div>
-
-<div class="blog-grid">
-
 {% raw %}
 {% for post in site.posts %}
 
 <article class="blog-card">
 
 <img class="blog-image"
-src="{{ post.image | default: 'https://via.placeholder.com/400x200/8B4513/FFFFFF?text=Physics+Research' }}">
+src="{{ post.image }}">
 
 <div class="blog-content">
 
-<div class="blog-meta">
-{{ post.date | date: "%B %d, %Y" }}
+<div class="blog-author">
+khawlajaffel • {{ post.date | date: "%b %d, %Y" }}
 </div>
 
-<h3 class="blog-title">
+<h2 class="blog-title">
 {{ post.title }}
-</h3>
+</h2>
 
-<div class="blog-excerpt">
-{{ post.excerpt | strip_html | truncate: 150 }}
-</div>
+<p class="blog-excerpt">
+{{ post.excerpt | strip_html | truncate:160 }}
+</p>
+
+<div class="blog-footer">
 
 <a href="{{ post.url }}" class="read-more">
 Continue reading →
 </a>
 
-<div style="margin-top:10px">
-
-<button class="like-btn" onclick="likePost('{{ post.url }}')">
-❤️ <span id="likes-{{ post.url }}">0</span>
+<button class="like-btn">
+❤️
 </button>
 
 </div>
-
-<div class="comments" id="comments-{{ post.url }}"></div>
-
-<input
-placeholder="Write comment"
-id="input-{{ post.url }}"
-style="width:100%;margin-top:5px">
-
-<button onclick="addComment('{{ post.url }}')">
-Post
-</button>
 
 </div>
 
 </article>
+
 {% endfor %}
 {% endraw %}
 
@@ -226,9 +204,11 @@ Post
 
 <ul class="icons">
 
-<li><a href="https://twitter.com/khawlajaffel" class="icon brands fa-twitter"></a></li>
-<li><a href="https://github.com/kjaffel" class="icon brands fa-github"></a></li>
-<li><a href="https://www.linkedin.com/in/khawla-jaffel-b726a414a/" class="icon brands fa-linkedin"></a></li>
+<li><a href="https://twitter.com/khawlajaffel" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+<li><a href="https://web.facebook.com/profile.php?id=100074540816904&_rdc=1&_rdr" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+<li><a href="https://github.com/kjaffel" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+<li><a href="https://www.linkedin.com/in/khawla-jaffel-b726a414a/" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+<li><a href="https://www.instagram.com/__gamza____/" class="icon brands fa-instagram"><span class="label">instagram</span></a></li>
 
 </ul>
 
@@ -236,7 +216,7 @@ Post
 
 <ul class="menu">
 
-<li>© 2025 Khawla Jaffel</li>
+<li>© 2026 Khawla Jaffel</li>
 
 <li>Powered by HTML5 UP</li>
 
