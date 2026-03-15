@@ -528,9 +528,9 @@ h1, h2, h3, h4{
           <!-- Post Content Preview -->
           <div class="post-content-preview">
             {% if post.excerpt %}
-              {{ post.excerpt | strip_html | truncate: 600 }}
+              {{ post.excerpt | strip_html | truncate: 300 }}
             {% else %}
-              {{ post.content | strip_html | truncate: 600 }}
+              {{ post.content | strip_html | truncate: 300 }}
             {% endif %}
             <a href="{{ post.url }}" class="read-more-link">Continue reading →</a>
           </div>
@@ -572,10 +572,6 @@ h1, h2, h3, h4{
                 <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.url }}{{ post.url }}" 
                    target="_blank" class="share-option">
                   <i class="fab fa-linkedin-in" style="color:#0077B5;"></i> LinkedIn
-                </a>
-                <a href="https://www.instagram.com/?url={{ site.url }}{{ post.url }}" 
-                   target="_blank" class="share-option">
-                  <i class="fab fa-instagram" style="color:#E4405F;"></i> Instagram
                 </a>
               </div>
             </div>
