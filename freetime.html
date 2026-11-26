@@ -1,0 +1,98 @@
+---
+---
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>Free time - Khawla Jaffel</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="https://fonts.googleapis.com/css2?family=Spinnaker&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css" />
+<link rel="stylesheet" href="assets/css/extra.css" />
+</head>
+<body class="is-preload">
+<div id="page-wrapper">
+<div id="header">
+<header>
+<h2><a href="index.html" id="logo">Khawla Jaffel</a></h2>
+<p>Particle Physicist — Postdoc at CERN &amp; KBFI/NICPB (Tallinn).<br/>Member of CMS Experiment at CERN.</p>
+</header>
+<nav id="nav">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="education.html">Education</a></li>
+<li><a href="talks.html">Talks</a></li>
+<li ><a href="publications.html">Publications</a></li>
+<li class="current"><a href="freetime.html">Free time</a></li>
+<li><a href="blog.html">Blog</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</nav>
+</div>
+<main class="page-main">
+<h1>Free time</h1>
+<p class="lead">When I am not looking for new particles, I look for light. Photography is how I slow down and notice the world around me.
+More of my pictures are on <a href="https://www.instagram.com/__gamza____/" target="_blank" rel="noopener">Instagram</a>.</p>
+
+{% assign photos = site.static_files | where_exp: "f", "f.path contains '/images/photography/'" | where_exp: "f", "f.extname == '.jpg' or f.extname == '.jpeg' or f.extname == '.png' or f.extname == '.webp' or f.extname == '.JPG'" | sort: "path" %}
+{% if photos.size > 0 %}
+<div class="gallery" id="gallery">
+{% for p in photos %}
+<figure>
+<img src="{{ p.path | relative_url }}" alt="{{ p.basename | replace: '_', ' ' | replace: '-', ' ' }}" loading="lazy">
+<figcaption>{{ p.basename | replace: '_', ' ' | replace: '-', ' ' }}</figcaption>
+</figure>
+{% endfor %}
+</div>
+{% else %}
+<div class="empty">
+<h3>Gallery coming soon</h3>
+<p>Photos will appear here as soon as they are added to <code>images/photography/</code>.</p>
+</div>
+{% endif %}
+</main>
+
+<div id="lightbox" role="dialog" aria-label="Photo viewer">
+<button id="lb-close" aria-label="Close">&times;</button>
+<button id="lb-prev" aria-label="Previous">&#8249;</button>
+<img id="lb-img" alt="">
+<div class="cap" id="lb-cap"></div>
+<button id="lb-next" aria-label="Next">&#8250;</button>
+</div>
+<script>
+(function(){
+  var figs=[].slice.call(document.querySelectorAll('#gallery figure'));
+  if(!figs.length)return;
+  var lb=document.getElementById('lightbox'),img=document.getElementById('lb-img'),cap=document.getElementById('lb-cap'),i=0;
+  function show(n){i=(n+figs.length)%figs.length;var im=figs[i].querySelector('img');img.src=im.src;img.alt=im.alt;cap.textContent=im.alt;lb.classList.add('open');}
+  function hide(){lb.classList.remove('open');}
+  figs.forEach(function(f,n){f.addEventListener('click',function(){show(n);});});
+  document.getElementById('lb-close').onclick=hide;
+  document.getElementById('lb-prev').onclick=function(e){e.stopPropagation();show(i-1);};
+  document.getElementById('lb-next').onclick=function(e){e.stopPropagation();show(i+1);};
+  lb.addEventListener('click',function(e){if(e.target===lb)hide();});
+  document.addEventListener('keydown',function(e){if(!lb.classList.contains('open'))return;
+    if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1);});
+})();
+</script>
+<div id="footer">
+<div class="container">
+<ul class="icons">
+<li><a href="https://twitter.com/khawlajaffel" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+<li><a href="https://web.facebook.com/profile.php?id=100074540816904&amp;_rdc=1&amp;_rdr" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+<li><a href="https://github.com/kjaffel" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+<li><a href="https://www.linkedin.com/in/khawla-jaffel-b726a414a/" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+<li><a href="https://www.instagram.com/__gamza____/" class="icon brands fa-instagram"><span class="label">instagram</span></a></li>
+</ul>
+<div class="copyright"><ul class="menu"><li>&copy; 2026 Khawla Jaffel</li><li>Powered by: <a href="http://html5up.net">HTML5 UP</a></li></ul></div>
+</div>
+</div>
+</div>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.dropotron.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
