@@ -14,12 +14,13 @@
 
 		<!-- CSS -->
 		<link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/autumn.css" />
 
 		<style>
 			/* Apply Spinnaker font */
 			body {
 				font-family: 'Spinnaker', sans-serif;
-				background: #fffaf5; /* light beige background */
+				background: #F6EAD8; /* light beige background */
 				color: #222; /* main text black */
 			}
 
@@ -33,11 +34,11 @@
 			}
 
 			h3 {
-				color: #FF8C00; /* Dark Orange */
+				color: #A8431F; /* Dark Orange */
 			}
 
 			a {
-				color: #FF8C00;
+				color: #A8431F;
 				text-decoration: none;
 			}
 
@@ -48,7 +49,7 @@
 
 			/* Buttons */
 			.button {
-				background: #141210;
+				background: #4A2018;
 				color: white;
 				border-radius: 6px;
 				padding: 10px 20px;
@@ -56,7 +57,7 @@
 				font-weight: bold;
 			}
 			.button:hover {
-				background: #a84f3d;
+				background: #A8431F;
 			}
 
 			/* Sidebar titles */
@@ -97,12 +98,12 @@
 				height: 300px;
 				border-radius: 50%;
 				object-fit: cover;
-				border: 5px solid #FF8C00;
+				border: 5px solid #A8431F;
 			}
 
 			.download {
 				display: inline-block;
-				background: #FF8C00;
+				background: #A8431F;
 				color: white;
 				padding: 12px 24px;
 				border-radius: 6px;
@@ -114,7 +115,51 @@
 
 			.download:hover {
 				background: #8B4513;
+				color: #fff;
 				text-decoration: none;
+			}
+
+			.download:visited, .download:active, .download:focus {
+				color: #fff;
+			}
+
+			/* Entry titles: dark brown so they stand apart from orange links */
+			.section h3 {
+				color: #5C3317;
+				font-weight: bold;
+			}
+
+			details.collapse {
+				margin-top: 1.5rem;
+				border-top: 1px solid #eadfd3;
+				padding-top: 0.5rem;
+			}
+
+			details.collapse > summary {
+				cursor: pointer;
+				font-weight: bold;
+				font-size: 1.2rem;
+				color: #5C3317;
+				padding: 0.5rem 0;
+				list-style: none;
+			}
+
+			details.collapse > summary::-webkit-details-marker { display: none; }
+
+			details.collapse > summary::before {
+				content: "\25B8";
+				display: inline-block;
+				margin-right: 0.5rem;
+				color: #A8431F;
+				transition: transform 0.2s;
+			}
+
+			details.collapse[open] > summary::before { transform: rotate(90deg); }
+
+			.section h4 {
+				color: #A0522D;
+				margin: 1.2rem 0 0.3rem 0;
+				font-size: 1.05rem;
 			}
 
 			.grid {
@@ -127,13 +172,13 @@
 			.section {
 				margin-bottom: 2.5rem;
 				padding: 1.5rem;
-				background: white;
+				background: #FFFAF2;
 				border-radius: 8px;
 				box-shadow: 0 2px 10px rgba(139, 69, 19, 0.1);
 			}
 
 			.section h2 {
-				border-bottom: 2px solid #FF8C00;
+				border-bottom: 2px solid #A8431F;
 				padding-bottom: 0.5rem;
 				margin-bottom: 1.5rem;
 				font-size: 1.5rem;
@@ -166,7 +211,7 @@
 			}
 
 			.skills span {
-				background: #FF8C00;
+				background: #A8431F;
 				color: white;
 				padding: 5px 12px;
 				border-radius: 20px;
@@ -248,7 +293,7 @@
 									<h3>Postdoc in Particle Physics</h3>
 									<p><strong>2025–Present</strong><br>
 									<a href="https://home.cern" target="_blank" rel="noopener">CERN - The European Organization for Nuclear Research</a><br>
-									<a href="https://kbfi.ee" target="_blank" rel="noopener">Keemilise ja Bioloogilise Füüsika Instituut</a> (KBFI/NICPB, Estonia)</p>
+									<a href="https://kbfi.ee" target="_blank" rel="noopener">Keemilise ja Bioloogilise Füüsika Instituut</a> (KBFI/NICPB, Estonia) · <a href="https://www.etis.ee/CV/Khawla_Jaffel" target="_blank" rel="noopener">ETIS profile</a></p>
 									
 									<h3>Postdoc in Particle Physics</h3>
 									<p><strong>2023–2025</strong><br>
@@ -273,15 +318,10 @@
 									<h3>B.Sc. in Physics and Chemistry</h3>
 									<p><strong>2012–2015</strong><br>
 									<a href="https://utm.rnu.tn/utm/fr/" target="_blank" rel="noopener">Université de Tunis El Manar</a>, Tunis</p>
-								</div>
-							</div>
-
-							<!-- Right Column -->
-							<div>
-								<div class="section">
-									<h2>Courses, Workshops & Conferences</h2>
-									<ul>
-									<li>The 19th Workshop of the LHC Higgs Working Group 28–30 Nov 2022, CERN (remote).
+									<details class="collapse">
+										<summary>Courses, Workshops &amp; Conferences attended</summary>
+										<ul>
+									<li>The 19th Workshop of the LHC Higgs Working Group 28–30 Nov 2022, CERN (remote).</li>
 									<li>Georges Lemaˆıtre Chair lecture series: Tracy Slatyer on ”New probes of dark matter physics in astrophysics and cosmology”, 16-20 May 2022, UCLouvain (Belgium).</li>
 									<li>2022 Higgs workshop, 28-30 Mar 2022, CERN (remote).</li>
 									<li>Third Intensive Course on Statistics for HEP. 7 janvier 2022 to 18 f ́evrier 2022, UCLouvain-CP3 (Belgium).</li>
@@ -306,6 +346,63 @@
 									<li>Physics Without Frontiers HEP course one month long taught remotely by Mario Campanelli from UCL, UK, with a series of lectures in person, (Tunis).</li>
 									<li>The Day’s Young Researchers in Physics 2016, on the occasion of the centenary of the Theory of General Relativity, (Tunis).</li>										
 									</ul>
+									</details>
+								</div>
+							</div>
+
+							<!-- Right Column -->
+							<div>
+								<div class="section">
+									<h2>Responsibilities</h2>
+									<h3>CMS Level-2 convener, Monte Carlo &amp; Interpretation (MC&amp;I)</h3>
+									<p><strong>Sep 2026 – Present</strong><br>
+									Co-lead the CMS group responsible for event generation, physics modelling and the interpretation of results across all physics analyses. I coordinate the production and validation of signal Monte Carlo samples and generator tunes for Run 3, oversee the prescriptions for theoretical uncertainties, and promote the reinterpretation and public release of CMS results (likelihoods, simplified models, analysis preservation) for the wider theory community.</p>
+
+									<h3>LHC Higgs Working Group, WG3: Extended Higgs Sector subgroup convener</h3>
+									<p><strong>2024 – Present</strong><br>
+									Co-lead the cross-experiment (ATLAS, CMS, theory) effort on BSM extended scalar sectors, including 2HDM, singlet extensions and heavy resonances. I organize subgroup meetings and workshops, coordinate benchmark scenarios and recommendations for LHC searches, and contribute to the group's reports for Run 3 and the HL-LHC.</p>
+
+									<h3>Bamboo framework development and maintenance</h3>
+									<p><strong>2023 – Present</strong><br>
+									A high-level HEP analysis library for ROOT::RDataFrame. <a href="https://bamboo-hep.readthedocs.io/en/latest/index.html" target="_blank" rel="noopener">Documentation</a></p>
+
+									<h3>B-Tagging POG</h3>
+									<p><strong>2023 – 2025</strong><br>
+									Run 3 ParticleNet trigger path development and online-offline jet matching studies.</p>
+
+									<h3>Tracker DPG</h3>
+									<p><strong>2021 – 2022</strong><br>
+									Code development of the SiStrip Cluster Parameter Estimator (CPE) and hit efficiency and resolution measurements.</p>
+
+									<h3>BTV POG</h3>
+									<p><strong>2019 – 2020</strong><br>
+									B-tagging efficiency measurements with the 2TagCount method in ttbar dilepton events at 13 TeV.</p>
+
+									<h3>Strip tracker shifter</h3>
+									<p>CRUZET: Cosmic RUn at ZEro Tesla.</p>
+								</div>
+
+								<div class="section">
+									<h2>Work &amp; Internship Experience</h2>
+									<h3>Supervision of two summer students</h3>
+									<p><strong>Jul – Aug 2024</strong><br>
+									<a href="https://fusep.ustc.edu.cn/fusep/" target="_blank" rel="noopener">Future Scientist Exchange Program (FuSEP)</a>, USTC.</p>
+
+									<h3>Summer Student Programme, CERN</h3>
+									<p><strong>24 Jun – 17 Aug 2018</strong>, Geneva (Switzerland)<br>
+									<a href="https://home.cern/" target="_blank" rel="noopener">CERN</a> ISOLDE Radioactive Ion Beam facility, under the direction of Heinz Haas and Joao Guilherme Martins Correia: Perturbed Angular Correlations and Hyperfine interactions of <sup>111</sup>Cd isotope.</p>
+
+									<h3>Physics teaching assistant (part time)</h3>
+									<p><strong>Sep – Dec 2018</strong><br>
+									The International School of Elite Education, Tunis. Physics courses (Electricity and Magnetism, Matter and the elements, Chemical bonds and molecular structure...) for second- and third-year students.</p>
+
+									<h3>Student intern</h3>
+									<p><strong>Nov 2017 – Jul 2018</strong><br>
+									Laboratoire des matériaux avancés et des phénomènes quantiques (MPQ), <a href="https://utm.rnu.tn/utm/fr/" target="_blank" rel="noopener">Université de Tunis El Manar</a>.</p>
+
+									<h3>Internship</h3>
+									<p><strong>August 2013</strong><br>
+									Experimental Techniques in Chemistry Laboratory: High-Performance Liquid Chromatography (HPLC), Atomic Absorption Spectrometry (AAS), water analysis and control of raw materials. Poulina Group Holding (PGH), Tunis.</p>
 								</div>
 
 								<div class="section">
@@ -339,6 +436,7 @@
 						<li><a href="https://twitter.com/khawlajaffel" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 						<li><a href="https://web.facebook.com/profile.php?id=100074540816904&_rdc=1&_rdr" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
 						<li><a href="https://github.com/kjaffel" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						<li><a href="https://gitlab.cern.ch/kjaffel" class="icon brands fa-gitlab"><span class="label">GitLab</span></a></li>
 						<li><a href="https://www.linkedin.com/in/khawla-jaffel-b726a414a/" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
 						<li><a href="https://www.instagram.com/__gamza____/" class="icon brands fa-instagram"><span class="label">instagram</span></a></li>
 					</ul>

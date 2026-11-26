@@ -15,3 +15,8 @@ kramdown:
 #minima:
 #  custom_css:
 #    - assets/css/main.css
+
+exclude:
+  - scripts
+  - README.txt
+  - netlify

@@ -1,0 +1,53 @@
+/*
+  Autumn palette -- loaded after main.css on every page.
+  Change the colours here once and the whole site follows.
+
+    cream      #f6ead8   page background
+    paper      #fffaf2   cards / content panels
+    mahogany   #4a2018   nav bar, footer
+    rust       #a8431f   links, accents, buttons (replaces bright orange)
+    ember      #c0602e   the thin line under the nav bar, hover glow
+    deep-brown #5c3317   entry titles
+    foliage    #7a7a35   small touches (olive leaf green)
+*/
+:root{
+  --cream:#f6ead8; --paper:#fffaf2; --mahogany:#4a2018; --rust:#a8431f;
+  --ember:#c0602e; --deep-brown:#5c3317; --foliage:#7a7a35; --ink:#3a2418;
+}
+
+body{background:var(--cream)!important;color:var(--ink)}
+
+/* header: no gray texture, warm cream with a soft leaf-gold fade */
+#header{
+  background-color:var(--cream);
+  background-image:linear-gradient(to bottom,#efd9b8 0,var(--cream) 6em);
+}
+#header header p{color:#7b5a45}
+
+/* nav bar: mahogany instead of gray, ember line instead of blue */
+#nav{
+  background-color:var(--mahogany);
+  background-image:linear-gradient(to bottom,rgba(255,255,255,0.05),rgba(0,0,0,0.25));
+}
+#nav:after{background-color:var(--ember);background-image:none}
+#nav > ul > li a{color:#e6cfae}
+#nav > ul > li:hover a,
+#nav > ul > li.current a,
+#nav > ul > li.active a{color:#fff}
+#nav > ul > li.current:before{background-color:var(--ember);background-image:none}
+
+/* content panels */
+.wrapper.style1{background:var(--paper)}
+.wrapper.style3{background-color:var(--rust);background-image:none}
+
+/* footer: mahogany, cream icons */
+#footer{background:var(--mahogany)!important;color:#e6cfae!important}
+#footer a{color:#e6cfae!important;border-bottom-color:transparent}
+#footer a:hover{color:#fff!important}
+#footer .icons a{color:#e6cfae!important}
+#footer .icons a:hover{color:#fff!important}
+#footer .copyright{color:#c9ab86}
+
+/* buttons */
+.button,button,input[type="submit"]{background:var(--mahogany)}
+.button:hover{background:var(--rust)!important}
