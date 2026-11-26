@@ -2,8 +2,8 @@
   Autumn palette -- loaded after main.css on every page.
   Change the colours here once and the whole site follows.
 
-    cream      #f6ead8   page background
-    paper      #fffaf2   cards / content panels
+    cream      #fffcf8   page background (near white)
+    paper      #ffffff   cards / content panels
     mahogany   #4a2018   nav bar, footer
     rust       #a8431f   links, accents, buttons (replaces bright orange)
     ember      #c0602e   the thin line under the nav bar, hover glow
@@ -11,7 +11,7 @@
     foliage    #7a7a35   small touches (olive leaf green)
 */
 :root{
-  --cream:#f6ead8; --paper:#fffaf2; --mahogany:#4a2018; --rust:#a8431f;
+  --cream:#fffcf8; --paper:#ffffff; --mahogany:#4a2018; --rust:#a8431f;
   --ember:#c0602e; --deep-brown:#5c3317; --foliage:#7a7a35; --ink:#3a2418;
 }
 
@@ -20,7 +20,7 @@ body{background:var(--cream)!important;color:var(--ink)}
 /* header: no gray texture, warm cream with a soft leaf-gold fade */
 #header{
   background-color:var(--cream);
-  background-image:linear-gradient(to bottom,#efd9b8 0,var(--cream) 6em);
+  background-image:linear-gradient(to bottom,#f7ebd9 0,var(--cream) 6em);
 }
 #header header p{color:#7b5a45}
 
